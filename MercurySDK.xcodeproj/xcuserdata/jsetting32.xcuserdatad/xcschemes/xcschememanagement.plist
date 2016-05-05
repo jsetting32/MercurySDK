@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>MercurySDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>1EB01C1E1CC59C8C006D83FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1EB01C3A1CC59C8C006D83FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1EB01C451CC59C8C006D83FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

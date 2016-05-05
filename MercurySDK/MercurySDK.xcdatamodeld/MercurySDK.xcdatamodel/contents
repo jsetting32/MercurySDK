@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15A284" minimumToolsVersion="Automatic">
+    <entity name="CreditResponse" representedClassName="CreditResponse" syncable="YES">
+        <attribute name="account" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="acqRefData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="authCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="authorizeAmount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="avsResult" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="batchNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cardType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cvvResult" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gratuityAmount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="invoice" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="processData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="purchaseAmount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="refNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="token" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Verify" representedClassName="Verify" syncable="YES">
+        <attribute name="cardHolderName" attributeType="String" syncable="YES"/>
+        <attribute name="cardType" attributeType="String" syncable="YES"/>
+        <attribute name="displayMessage" attributeType="String" syncable="YES"/>
+        <attribute name="expDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="maskedAccount" attributeType="String" syncable="YES"/>
+        <attribute name="responseCode" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="status" attributeType="String" syncable="YES"/>
+        <attribute name="statusMessage" attributeType="String" syncable="YES"/>
+        <attribute name="token" attributeType="String" syncable="YES"/>
+        <attribute name="tranType" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="VerifyCardInfo" representedClassName="VerifyCardInfo" parentEntity="Verify" syncable="YES">
+        <attribute name="cardIdExpired" attributeType="Boolean" syncable="YES"/>
+        <attribute name="cardUsage" attributeType="String" syncable="YES"/>
+        <attribute name="operatorId" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="VerifyPayment" representedClassName="VerifyPayment" parentEntity="Verify" syncable="YES">
+        <attribute name="acqRefData" attributeType="String" syncable="YES"/>
+        <attribute name="amount" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="authCode" attributeType="String" syncable="YES"/>
+        <attribute name="avsAddress" attributeType="String" syncable="YES"/>
+        <attribute name="avsResult" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avsZip" attributeType="String" syncable="YES"/>
+        <attribute name="customerCode" attributeType="String" syncable="YES"/>
+        <attribute name="cvvResult" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="invoice" attributeType="String" syncable="YES"/>
+        <attribute name="memo" attributeType="String" syncable="YES"/>
+        <attribute name="paymentIdExpired" attributeType="Boolean" syncable="YES"/>
+        <attribute name="processData" attributeType="String" syncable="YES"/>
+        <attribute name="refNo" attributeType="String" syncable="YES"/>
+        <attribute name="taxAmount" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="transPostTime" attributeType="Date" syncable="YES"/>
+    </entity>
+    <fetchRequest name="CreditResponseFetchAll" entity="CreditResponse"/>
+    <fetchRequest name="VerifyCardInfoFetchAll" entity="VerifyCardInfo"/>
+    <fetchRequest name="VerifyPaymentFetchAll" entity="VerifyPayment"/>
+    <elements>
+        <element name="VerifyPayment" positionX="-63" positionY="-18" width="128" height="268"/>
+        <element name="VerifyCardInfo" positionX="-63" positionY="-153" width="128" height="90"/>
+        <element name="Verify" positionX="180" positionY="-60" width="128" height="193"/>
+        <element name="CreditResponse" positionX="-245" positionY="-117" width="128" height="285"/>
+    </elements>
+</model>
