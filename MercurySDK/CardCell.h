@@ -10,9 +10,10 @@
 
 @interface CardCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *labelMaskedAccount;
-@property (weak, nonatomic) IBOutlet UILabel *labelToken;
-@property (weak, nonatomic) IBOutlet UILabel *labelCardType;
 @property (weak, nonatomic) IBOutlet UILabel *labelExpDate;
-@property (weak, nonatomic) IBOutlet UILabel *labelDisplayMessage;
+@property (weak, nonatomic) IBOutlet UIView *viewValid;
+@property (assign, nonatomic) BOOL isValid;
+@property (assign, nonatomic) BOOL isCard;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewCardType;
 + (NSString *)cellIdentifier;
 @end

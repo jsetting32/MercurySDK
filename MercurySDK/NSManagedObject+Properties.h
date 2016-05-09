@@ -12,4 +12,5 @@
 + (void)deleteRelatedEntitiesWithPredicate:(NSPredicate *)predicate inManagedObjectContext:(NSManagedObjectContext *)context;
 + (instancetype)js_softManagedObject:(NSManagedObjectContext *)context;
 + (instancetype)js_hardManagedObject:(NSManagedObjectContext *)context;
+- (BOOL)deleteObject:(NSError **)error;
 @end

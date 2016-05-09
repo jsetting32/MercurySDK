@@ -21,8 +21,8 @@
     _displayMessage = [response objectForKey:@"DisplayMessage"];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
-    _expDate = [formatter dateFromString:@"ExpDate"];
+    [formatter setDateFormat:@"MMyy"];
+    _expDate = [formatter dateFromString:[response objectForKey:@"ExpDate"]];
     
     _maskedAccount = [response objectForKey:@"MaskedAccount"];
     _responseCode = @([[response objectForKey:@"ResponseCode"] integerValue]);

@@ -24,6 +24,21 @@
 #import "JSMercuryCreditTokenVoidReturn.h"
 #import "JSMercuryCreditTokenVoidSale.h"
 
+
+/* 
+ MasterCard
+ 5499990123456781 0516
+ ￼￼
+ Visa
+ 4003000123456781 0516
+
+ Amex
+ 373953244361001 0516
+
+ Discover
+ 6011000997235373 0513
+ ￼￼*/
+
 @interface JSMercury : NSObject
 + (void)setMerchantID:(nonnull NSString *)merchantID password:(nonnull NSString *)password coreData:(BOOL)coreData production:(BOOL)production;
 @end

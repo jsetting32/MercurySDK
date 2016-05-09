@@ -9,6 +9,8 @@
 #import "CardController.h"
 #import "CardViewModel.h"
 #import "JSMercury.h"
+#import "NSManagedObject+Properties.h"
+#import "JSMercuryInitializeCardInfo.h"
 
 @interface CardController () <UITableViewDelegate, UITableViewDataSource, CardViewModelDelegate>
 @property (strong, nonatomic, nonnull) CardViewModel *model;
@@ -47,116 +49,60 @@
     return [self.model tableView:tableView numberOfRowsInSection:section];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.model numberOfSectionsInTableView:tableView];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.model tableView:tableView titleForHeaderInSection:section];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        VerifyCardInfo *card = [[self.model cards] objectAtIndex:indexPath.row];
+        [self deleteCard:card];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        return;
+    }
     
-    VerifyCardInfo *payment = [self.model.cards objectAtIndex:indexPath.row];
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Actions" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *adjust = [UIAlertAction actionWithTitle:@"Adjust" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenAdjust *a = [[JSMercuryCreditTokenAdjust alloc] initWithToken:payment.token];
-        [a js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
-            NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-
-        }];
-    }];
-    UIAlertAction *preauth = [UIAlertAction actionWithTitle:@"PreAuth" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenPreAuth *preAuth = [[JSMercuryCreditTokenPreAuth alloc] initWithToken:payment.token];
-        [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
-            NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-
-        }];
-    }];
-    UIAlertAction *preauthCapture = [UIAlertAction actionWithTitle:@"PreAuthCapture" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenPreAuthCapture *preAuth = [[JSMercuryCreditTokenPreAuthCapture alloc] initWithToken:payment.token];
-        [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
-            NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-
-        }];
-    }];
-    UIAlertAction *returna = [UIAlertAction actionWithTitle:@"Return" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenReturn *preAuth = [[JSMercuryCreditTokenReturn alloc] initWithToken:payment.token];
-        [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
-            NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-
-        }];
-    }];
-    UIAlertAction *reversal = [UIAlertAction actionWithTitle:@"Reversal" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenReversal *preAuth = [[JSMercuryCreditTokenReversal alloc] initWithToken:payment.token];
-        [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
-            NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-
-        }];
+    JSMercuryInitializeCardInfo *payment = [JSMercuryInitializeCardInfo js_init];
+    [payment js_mercury_transaction:^(UINavigationController *navigationController, id webController, NSError *error) {
+        if (error) {
+            return;
+        }
         
+        [webController setDelegate:self];
+        [self presentViewController:navigationController animated:YES completion:nil];
     }];
-    UIAlertAction *sale = [UIAlertAction actionWithTitle:@"Sale" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenSale *preAuth = [[JSMercuryCreditTokenSale alloc] initWithToken:payment.token];
-        preAuth.purchaseAmount = @10;
-        preAuth.invoice = @"1234";
-        [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
-            NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-        }];
-        
-    }];
-    UIAlertAction *voidSale = [UIAlertAction actionWithTitle:@"VoidSale" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenVoidSale *preAuth = [[JSMercuryCreditTokenVoidSale alloc] initWithToken:payment.token];
-        [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
-            NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
+}
 
-        }];
+- (void)deleteCard:(VerifyCardInfo *)card {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Payment" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete Card" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        NSError *error = nil;
+        if (![card deleteObject:&error]) {
+            UIAlertController *delete = [UIAlertController alertControllerWithTitle:@"Delete Card Error" message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
+            UIAlertAction *retry = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self deleteCard:card];
+            }];
+            [delete addAction:okay];
+            [delete addAction:retry];
+            [self presentViewController:delete animated:YES completion:nil];
+            return;
+        }
         
-    }];
-    UIAlertAction *voidReturn = [UIAlertAction actionWithTitle:@"VoidReturn" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenVoidReturn *preAuth = [[JSMercuryCreditTokenVoidReturn alloc] initWithToken:payment.token];
-        [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
-            NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-
+        UIAlertController *delete = [UIAlertController alertControllerWithTitle:@"Delete Card" message:@"Successfully Deleted Card" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.model loadCards];
         }];
+        [delete addAction:okay];
+        [self presentViewController:delete animated:YES completion:nil];
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    
-    [alert addAction:adjust];
-    [alert addAction:preauth];
-    [alert addAction:preauthCapture];
-    [alert addAction:returna];
-    [alert addAction:reversal];
-    [alert addAction:sale];
-    [alert addAction:voidSale];
-    [alert addAction:voidReturn];
+    [alert addAction:delete];
     [alert addAction:cancel];
-    
     [self presentViewController:alert animated:YES completion:nil];
 }
 

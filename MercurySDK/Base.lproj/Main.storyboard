@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -146,23 +147,14 @@
                                     <action selector="verifyPayment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IBF-db-hII"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBq-bY-o7E">
-                                <rect key="frame" x="247" y="66" width="107" height="30"/>
-                                <state key="normal" title="Verify Card Info"/>
-                                <connections>
-                                    <action selector="verifyCardInfo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R03-2k-jBs"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="amv-LM-0Fr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="DQE-40-uU2"/>
-                            <constraint firstItem="QBq-bY-o7E" firstAttribute="centerX" secondItem="amv-LM-0Fr" secondAttribute="centerX" id="atm-p3-dhc"/>
                             <constraint firstItem="amv-LM-0Fr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lSy-69-8Ek"/>
-                            <constraint firstItem="QBq-bY-o7E" firstAttribute="top" secondItem="amv-LM-0Fr" secondAttribute="bottom" constant="8" id="s2M-5q-zk4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Verification" selectedImage="Verification" id="tSp-c8-Ojw"/>
+                    <tabBarItem key="tabBarItem" title="Verification" image="16F3AAC0-F6F6-4EF8-9DDC-AAAB8E6F2DD4" id="tSp-c8-Ojw"/>
                     <connections>
                         <segue destination="ySI-TJ-4mP" kind="show" identifier="showHC" id="9Rk-13-V3g"/>
                     </connections>
@@ -183,69 +175,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O3U-9C-nJO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="O3U-9C-nJO">
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CardCell" rowHeight="86" id="DKk-S6-wRY" customClass="CardCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="86"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CardCell" rowHeight="50" id="DKk-S6-wRY" customClass="CardCell">
+                                        <rect key="frame" x="0.0" y="50" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DKk-S6-wRY" id="aVc-EY-74C">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TFe-yL-Znx">
-                                                    <rect key="frame" x="8" y="36" width="27" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6El-jE-t4z">
+                                                    <rect key="frame" x="68" y="18" width="77" height="14"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exp Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="O0a-gT-umn">
-                                                    <rect key="frame" x="550" y="63" width="42" height="14"/>
+                                                    <rect key="frame" x="524" y="18" width="42" height="14"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9ub-UW-Mkl">
-                                                    <rect key="frame" x="570" y="8" width="22" height="14"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="I65-hc-3Km">
-                                                    <rect key="frame" x="8" y="63" width="76" height="14"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6El-jE-t4z">
-                                                    <rect key="frame" x="8" y="8" width="77" height="14"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4a-SC-o7B">
+                                                    <rect key="frame" x="574" y="20" width="10" height="10"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="n4a-SC-o7B" secondAttribute="height" multiplier="1:1" id="kdI-Dx-Zt3"/>
+                                                        <constraint firstAttribute="height" constant="10" id="ymf-Ow-0E7"/>
+                                                    </constraints>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit" translatesAutoresizingMaskIntoConstraints="NO" id="nkA-po-vVw">
+                                                    <rect key="frame" x="16" y="11" width="44" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="IiI-rS-7f0"/>
+                                                        <constraint firstAttribute="height" constant="27" id="xFC-7a-HHj"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="topMargin" secondItem="9ub-UW-Mkl" secondAttribute="top" id="DtE-Dh-h4Y"/>
-                                                <constraint firstItem="TFe-yL-Znx" firstAttribute="centerY" secondItem="aVc-EY-74C" secondAttribute="centerY" id="HAo-4P-1Aw"/>
-                                                <constraint firstAttribute="topMargin" secondItem="6El-jE-t4z" secondAttribute="top" id="MJ7-QS-mYe"/>
-                                                <constraint firstItem="TFe-yL-Znx" firstAttribute="top" secondItem="6El-jE-t4z" secondAttribute="bottom" constant="14" id="OO4-gR-WlK"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="6El-jE-t4z" secondAttribute="leading" id="WEr-rA-awK"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="9ub-UW-Mkl" secondAttribute="trailing" id="Ysq-Ax-sOf"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="TFe-yL-Znx" secondAttribute="leading" id="Z3l-9x-TLu"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="O0a-gT-umn" secondAttribute="trailing" id="fe4-8A-BxX"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="I65-hc-3Km" secondAttribute="bottom" id="i9S-sd-a3M"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="O0a-gT-umn" secondAttribute="bottom" id="jnS-wh-NHs"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="I65-hc-3Km" secondAttribute="leading" id="m0V-4M-YBX"/>
-                                                <constraint firstItem="I65-hc-3Km" firstAttribute="top" secondItem="TFe-yL-Znx" secondAttribute="bottom" constant="13" id="rTn-XO-13q"/>
+                                                <constraint firstItem="nkA-po-vVw" firstAttribute="centerY" secondItem="aVc-EY-74C" secondAttribute="centerY" id="5ud-tP-arY"/>
+                                                <constraint firstItem="nkA-po-vVw" firstAttribute="leading" secondItem="aVc-EY-74C" secondAttribute="leadingMargin" constant="8" id="Hut-qJ-dD6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="n4a-SC-o7B" secondAttribute="trailing" constant="8" id="VHR-8X-ZIS"/>
+                                                <constraint firstItem="6El-jE-t4z" firstAttribute="leading" secondItem="nkA-po-vVw" secondAttribute="trailing" constant="8" id="n7a-Zp-gve"/>
+                                                <constraint firstItem="6El-jE-t4z" firstAttribute="centerY" secondItem="aVc-EY-74C" secondAttribute="centerY" id="pLr-Rk-cMV"/>
+                                                <constraint firstItem="O0a-gT-umn" firstAttribute="centerY" secondItem="aVc-EY-74C" secondAttribute="centerY" id="pha-TC-OPS"/>
+                                                <constraint firstItem="n4a-SC-o7B" firstAttribute="centerY" secondItem="aVc-EY-74C" secondAttribute="centerY" id="qFa-ff-LvN"/>
+                                                <constraint firstItem="n4a-SC-o7B" firstAttribute="leading" secondItem="O0a-gT-umn" secondAttribute="trailing" constant="8" id="yeh-3S-KVc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="labelCardType" destination="9ub-UW-Mkl" id="1oO-Z7-uuk"/>
-                                            <outlet property="labelDisplayMessage" destination="I65-hc-3Km" id="19d-Ce-9OJ"/>
+                                            <outlet property="imageViewCardType" destination="nkA-po-vVw" id="o96-LM-sGX"/>
                                             <outlet property="labelExpDate" destination="O0a-gT-umn" id="FIq-Rm-tK4"/>
                                             <outlet property="labelMaskedAccount" destination="6El-jE-t4z" id="w0j-3G-jni"/>
-                                            <outlet property="labelToken" destination="TFe-yL-Znx" id="i9L-ec-3rX"/>
+                                            <outlet property="viewValid" destination="n4a-SC-o7B" id="GUN-H8-JzH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -263,7 +247,7 @@
                             <constraint firstItem="KgN-ih-5vH" firstAttribute="top" secondItem="O3U-9C-nJO" secondAttribute="bottom" id="wfh-T8-GU8"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Cards" id="4ui-CQ-Sff"/>
+                    <tabBarItem key="tabBarItem" title="Payment" image="credit" selectedImage="credit" id="4ui-CQ-Sff"/>
                     <connections>
                         <outlet property="tableView" destination="O3U-9C-nJO" id="r1D-hz-OfG"/>
                     </connections>
@@ -385,7 +369,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOX-Ax-Ehe">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="ySI-TJ-4mP" id="Hzs-HG-6Lu"/>
@@ -410,6 +394,22 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Verification" width="21" height="24"/>
+        <image name="16F3AAC0-F6F6-4EF8-9DDC-AAAB8E6F2DD4" width="37" height="22">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
+GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
+V05TQ29sb3KAAoAMEiTAAACAA4AKWHszNywgMjJ90hUKFhhaTlMub2JqZWN0c6EXgASACdIVChoYohsc
+gAWABoAJEAXTIAohIiMkV05TLmJhc2VbTlMucmVsYXRpdmWAAIAIgAdfEHxmaWxlOi8vL0FwcGxpY2F0
+aW9ucy9YY29kZS5hcHAvQ29udGVudHMvUGx1Z0lucy9JREVJbnRlcmZhY2VCdWlsZGVyS2l0LmlkZXBs
+dWdpbi9Db250ZW50cy9SZXNvdXJjZXMvSUJNaXNzaW5nSW1hZ2VHbHlwaC50aWZm0icoKSpaJGNsYXNz
+bmFtZVgkY2xhc3Nlc1VOU1VSTKIpK1hOU09iamVjdNInKC0uV05TQXJyYXmiLSvTMDEKMjM0V05TV2hp
+dGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0icoNjdXTlNDb2xvcqI2K9InKDk6V05TSW1hZ2WiOStfEA9O
+U0tleWVkQXJjaGl2ZXLRPT5Ucm9vdIABAAgAEQAaACMALQAyADcARQBLAFYAXQBkAHEAeACAAIIAhACJ
+AIsAjQCWAJsApgCoAKoArACxALQAtgC4ALoAvADDAMsA1wDZANsA3QFcAWEBbAF1AXsBfgGHAYwBlAGX
+AZ4BpgGzAbgBugG8AcEByQHMAdEB2QHcAe4B8QH2AAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAAAAAAAAAA
+Afg
+</mutableData>
+        </image>
+        <image name="credit" width="37" height="22"/>
     </resources>
 </document>

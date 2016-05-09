@@ -29,9 +29,10 @@
 + (nullable NSString *)js_mercury_checkout_style_type:(kJSMercuryCheckoutPageStyle)type;
 + (nullable NSString *)js_mercury_avs_fields:(kJSMercuryTransactionAVSFields)type;
 + (BOOL)checkField:(nullable id)field;
-
++ (nonnull UIImage *)cardImage:(nullable NSString *)cardType;
 + (nonnull NSString *)appTitle;
 + (nonnull NSString *)appVersion;
 + (nonnull NSString *)build;
 + (nonnull NSString *)versionBuild;
++ (void)showAlert:(nonnull id)target card:(nonnull JSMercuryVerify *)payment;
 @end

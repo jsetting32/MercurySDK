@@ -50,4 +50,10 @@
     return [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass(self) inManagedObjectContext:context];
 }
 
+- (BOOL)deleteObject:(NSError **)error {
+    NSManagedObjectContext *context = self.managedObjectContext;
+    [context deleteObject:self];
+    return [context save:error];
+}
+
 @end

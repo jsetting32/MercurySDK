@@ -9,6 +9,7 @@
 #import "CardViewModel.h"
 #import "JSMercuryCoreDataController.h"
 #import "CardCell.h"
+#import "JSMercuryUtility.h"
 
 @interface CardViewModel()
 @property (strong, nonatomic, nonnull, readwrite) NSArray <VerifyCardInfo *> *cards;
@@ -32,18 +33,36 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CardCell *cell = (CardCell *)[tableView dequeueReusableCellWithIdentifier:[CardCell cellIdentifier]];
-    VerifyCardInfo *card = [self.cards objectAtIndex:indexPath.row];
-    [cell.labelExpDate setText:[card formattedExpDate]];
-    [cell.labelToken setText:card.token];
-    [cell.labelCardType setText:card.cardType];
-    [cell.labelMaskedAccount setText:card.maskedAccount];
-    [cell.labelDisplayMessage setText:card.displayMessage];
+
+    if (indexPath.section == 0) {
+        VerifyCardInfo *card = [self.cards objectAtIndex:indexPath.row];
+        [cell.labelExpDate setText:[card formattedExpDate]];
+        [cell setIsCard:YES];
+        [cell setIsValid:[card isValid]];
+        [cell.imageViewCardType setImage:[JSMercuryUtility cardImage:[card cardType]]];
+        [cell.labelMaskedAccount setText:[card formattedMaskedAccount]];
+        return cell;
+    }
+    
+    [cell.labelExpDate setText:@""];
+    [cell setIsCard:NO];
+    [cell.imageViewCardType setImage:[JSMercuryUtility cardImage:nil]];
+    [cell.labelMaskedAccount setText:@"Add Credit Card"];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.cards count];
+    if (section == 0) return [self.cards count];
+    return 1;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) return @"Payment Methods";
+    return @"Add Payment Method";
+}
 
 @end

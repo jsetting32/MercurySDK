@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Insert code here to declare functionality of your managed object subclass
 - (NSString *)formattedExpDate;
+- (NSString *)formattedExpDateMonth;
+- (NSString *)formattedExpDateYear;
+- (BOOL)isValid;
+- (NSString *)formattedMaskedAccount;
 
 @end
 

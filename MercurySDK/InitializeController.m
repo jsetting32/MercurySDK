@@ -39,7 +39,7 @@
     JSMercuryInitializePayment *payment = [JSMercuryInitializePayment js_init];
     [payment setTotalAmount:@2];
     [payment setInvoice:@"012345"];
-    [payment js_mercury_transaction:^(UINavigationController *navigationController, JSMercuryWebViewController *webController, NSError *error) {
+    [payment js_mercury_transaction:^(UINavigationController *navigationController, id webController, NSError *error) {
         if (error) {
             return;
         }

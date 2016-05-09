@@ -50,6 +50,12 @@
     [self.tableView reloadData];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    CreditResponse *card = [self.model.credits objectAtIndex:indexPath.row];
+    
+}
+
+
 /*
 #pragma mark - Navigation
 

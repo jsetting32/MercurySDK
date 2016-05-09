@@ -62,6 +62,11 @@
 		1EE2FBD01CD93FF600A61F1B /* CreditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBCF1CD93FF600A61F1B /* CreditController.m */; };
 		1EE2FBD31CD9400800A61F1B /* CreditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBD21CD9400800A61F1B /* CreditCell.m */; };
 		1EE2FBD61CD9401300A61F1B /* CreditViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBD51CD9401300A61F1B /* CreditViewModel.m */; };
+		1EE2FBDA1CE1054F00A61F1B /* JSCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBD81CE1054F00A61F1B /* JSCardView.m */; };
+		1EE2FBDB1CE1054F00A61F1B /* JSCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EE2FBD91CE1054F00A61F1B /* JSCardView.xib */; };
+		1EE2FBE11CE14DE800A61F1B /* JSMercuryAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBE01CE14DE800A61F1B /* JSMercuryAddress.m */; };
+		1EE2FBE41CE1538700A61F1B /* JSCheckoutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBE31CE1538700A61F1B /* JSCheckoutController.m */; };
+		1EE2FBE71CE1539F00A61F1B /* JSPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBE61CE1539F00A61F1B /* JSPresentationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +193,15 @@
 		1EE2FBD21CD9400800A61F1B /* CreditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditCell.m; sourceTree = "<group>"; };
 		1EE2FBD41CD9401300A61F1B /* CreditViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditViewModel.h; sourceTree = "<group>"; };
 		1EE2FBD51CD9401300A61F1B /* CreditViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditViewModel.m; sourceTree = "<group>"; };
+		1EE2FBD71CE1054F00A61F1B /* JSCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCardView.h; sourceTree = "<group>"; };
+		1EE2FBD81CE1054F00A61F1B /* JSCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCardView.m; sourceTree = "<group>"; };
+		1EE2FBD91CE1054F00A61F1B /* JSCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSCardView.xib; sourceTree = "<group>"; };
+		1EE2FBDF1CE14DE800A61F1B /* JSMercuryAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMercuryAddress.h; sourceTree = "<group>"; };
+		1EE2FBE01CE14DE800A61F1B /* JSMercuryAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMercuryAddress.m; sourceTree = "<group>"; };
+		1EE2FBE21CE1538700A61F1B /* JSCheckoutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutController.h; sourceTree = "<group>"; };
+		1EE2FBE31CE1538700A61F1B /* JSCheckoutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutController.m; sourceTree = "<group>"; };
+		1EE2FBE51CE1539F00A61F1B /* JSPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSPresentationController.h; sourceTree = "<group>"; };
+		1EE2FBE61CE1539F00A61F1B /* JSPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSPresentationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +356,8 @@
 				1EE2FB381CD4084D00A61F1B /* JSMercuryUtility.m */,
 				1EE2FB391CD4084D00A61F1B /* JSMercuryVerify.h */,
 				1EE2FB3A1CD4084D00A61F1B /* JSMercuryVerify.m */,
+				1EE2FBDF1CE14DE800A61F1B /* JSMercuryAddress.h */,
+				1EE2FBE01CE14DE800A61F1B /* JSMercuryAddress.m */,
 				1EE2FB3B1CD4084D00A61F1B /* JSMercuryVerifyCardInfo.h */,
 				1EE2FB3C1CD4084D00A61F1B /* JSMercuryVerifyCardInfo.m */,
 				1EE2FB3D1CD4084D00A61F1B /* JSMercuryVerifyPayment.h */,
@@ -349,6 +365,13 @@
 				1EE2FB3F1CD4084D00A61F1B /* JSMercuryWebViewController.h */,
 				1EE2FB401CD4084D00A61F1B /* JSMercuryWebViewController.m */,
 				1EE2FB411CD4084D00A61F1B /* JSMercuryWebViewStoryboard.storyboard */,
+				1EE2FBE21CE1538700A61F1B /* JSCheckoutController.h */,
+				1EE2FBE31CE1538700A61F1B /* JSCheckoutController.m */,
+				1EE2FBE51CE1539F00A61F1B /* JSPresentationController.h */,
+				1EE2FBE61CE1539F00A61F1B /* JSPresentationController.m */,
+				1EE2FBD71CE1054F00A61F1B /* JSCardView.h */,
+				1EE2FBD81CE1054F00A61F1B /* JSCardView.m */,
+				1EE2FBD91CE1054F00A61F1B /* JSCardView.xib */,
 				1EE2FB711CD419C200A61F1B /* NSManagedObjectContext+Properties.h */,
 				1EE2FB721CD419C200A61F1B /* NSManagedObjectContext+Properties.m */,
 				1EE2FB731CD419C200A61F1B /* NSManagedObject+Properties.h */,
@@ -490,6 +513,7 @@
 				1EE2FBB01CD4226C00A61F1B /* MercurySDK.xcdatamodeld in Resources */,
 				1EB01C351CC59C8C006D83FD /* LaunchScreen.storyboard in Resources */,
 				1EB01C321CC59C8C006D83FD /* Assets.xcassets in Resources */,
+				1EE2FBDB1CE1054F00A61F1B /* JSCardView.xib in Resources */,
 				1EE2FB591CD4084D00A61F1B /* JSMercuryWebViewStoryboard.storyboard in Resources */,
 				1EB01C2D1CC59C8C006D83FD /* Main.storyboard in Resources */,
 			);
@@ -531,8 +555,11 @@
 				1EE2FBBE1CD7FACE00A61F1B /* PurchasesCell.m in Sources */,
 				1EE2FB511CD4084D00A61F1B /* JSMercuryInitializeCardInfo.m in Sources */,
 				1EE2FB441CD4084D00A61F1B /* JSMercuryConstants.m in Sources */,
+				1EE2FBDA1CE1054F00A61F1B /* JSCardView.m in Sources */,
 				1EE2FB541CD4084D00A61F1B /* JSMercuryUtility.m in Sources */,
 				1EE2FBB51CD7FA6700A61F1B /* PurchasesController.m in Sources */,
+				1EE2FBE11CE14DE800A61F1B /* JSMercuryAddress.m in Sources */,
+				1EE2FBE71CE1539F00A61F1B /* JSPresentationController.m in Sources */,
 				1EE2FB531CD4084D00A61F1B /* JSMercuryInitializeResponse.m in Sources */,
 				1EE2FBC41CD80D9D00A61F1B /* CardViewModel.m in Sources */,
 				1EE2FBCD1CD93AF000A61F1B /* CreditResponse.m in Sources */,
@@ -560,6 +587,7 @@
 				1EE2FB521CD4084D00A61F1B /* JSMercuryInitializePayment.m in Sources */,
 				1EE2FB761CD419C200A61F1B /* NSManagedObject+Properties.m in Sources */,
 				1EE2FBA91CD41E3500A61F1B /* Verify+CoreDataProperties.m in Sources */,
+				1EE2FBE41CE1538700A61F1B /* JSCheckoutController.m in Sources */,
 				1EE2FBD01CD93FF600A61F1B /* CreditController.m in Sources */,
 				1EE2FB501CD4084D00A61F1B /* JSMercuryInitialize.m in Sources */,
 				1EE2FB431CD4084D00A61F1B /* JSMercury.m in Sources */,

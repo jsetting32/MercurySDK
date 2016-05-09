@@ -12,7 +12,7 @@
 
 @interface JSMercuryVerify : NSObject <HCMercuryHelperDelegate>
 
-- (nonnull instancetype)initWithResponse:(nullable NSDictionary *)response;
+- (nullable instancetype)initWithResponse:(nullable NSDictionary *)response;
 
 @property (strong, nonatomic, nonnull) kJSMercuryObjectBlock completionBlock;
 
