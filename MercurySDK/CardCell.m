@@ -36,4 +36,8 @@
     return @"CardCell";
 }
 
++ (CGFloat)addressHeight {
+    return 50.0f;
+}
+
 @end

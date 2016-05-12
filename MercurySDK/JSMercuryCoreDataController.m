@@ -186,4 +186,27 @@
     return [context executeFetchRequest:request error:&error];
 }
 
++ (NSArray <Address *> *)fetchAddressBillingAll:(NSError *)error {
+    NSManagedObjectContext *context = [[JSMercuryCoreDataController sharedInstance] masterManagedObjectContext];
+    NSManagedObjectModel* model = [[context persistentStoreCoordinator] managedObjectModel];
+    NSFetchRequest* request = [model fetchRequestTemplateForName:@"AddressBillingFetchAll"];
+    return [context executeFetchRequest:request error:&error];
+}
+
++ (NSArray <Address *> *)fetchAddressShippingAll:(NSError *)error {
+    NSManagedObjectContext *context = [[JSMercuryCoreDataController sharedInstance] masterManagedObjectContext];
+    NSManagedObjectModel* model = [[context persistentStoreCoordinator] managedObjectModel];
+    NSFetchRequest* request = [model fetchRequestTemplateForName:@"AddressShippingFetchAll"];
+    return [context executeFetchRequest:request error:&error];
+}
+
++ (NSNumber *)fetchNextInvoiceNumber:(NSError *)error {
+    NSManagedObjectContext *context = [[JSMercuryCoreDataController sharedInstance] masterManagedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"CreditResponse"];
+    fetchRequest.fetchLimit = 1;
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"invoice" ascending:NO]];
+    CreditResponse * response = [[context executeFetchRequest:fetchRequest error:&error] firstObject];
+    return response ? @([[response invoice] integerValue] + 1) : @1;
+}
+
 @end

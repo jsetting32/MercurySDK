@@ -11,6 +11,7 @@
 #import "VerifyPayment.h"
 #import "VerifyCardInfo.h"
 #import "CreditResponse.h"
+#import "Address.h"
 
 @interface JSMercuryCoreDataController : NSObject
 + (nullable instancetype)sharedInstance;
@@ -27,4 +28,7 @@
 + (nonnull NSArray <VerifyPayment *> *)fetchVerifyPaymentAll:(nullable NSError *)error;
 + (nonnull NSArray <VerifyCardInfo *> *)fetchVerifyCardInfoAll:(nullable NSError *)error;
 + (nonnull NSArray <CreditResponse *> *)fetchCreditResponseAll:(nullable NSError *)error;
++ (nonnull NSArray <CreditResponse *> *)fetchAddressShippingAll:(nullable NSError *)error;
++ (nonnull NSArray <CreditResponse *> *)fetchAddressBillingAll:(nullable NSError *)error;
++ (nonnull NSNumber *)fetchNextInvoiceNumber:(nullable NSError *)error;
 @end

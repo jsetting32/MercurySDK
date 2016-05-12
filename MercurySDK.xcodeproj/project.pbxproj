@@ -52,21 +52,35 @@
 		1EE2FBB21CD7DAF300A61F1B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE2FBB11CD7DAF300A61F1B /* CoreData.framework */; };
 		1EE2FBB51CD7FA6700A61F1B /* PurchasesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBB41CD7FA6700A61F1B /* PurchasesController.m */; };
 		1EE2FBB81CD7FA7700A61F1B /* InitializeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBB71CD7FA7700A61F1B /* InitializeController.m */; };
-		1EE2FBBB1CD7FA8100A61F1B /* CardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBBA1CD7FA8100A61F1B /* CardController.m */; };
 		1EE2FBBE1CD7FACE00A61F1B /* PurchasesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBBD1CD7FACE00A61F1B /* PurchasesCell.m */; };
 		1EE2FBC11CD8080100A61F1B /* PurchasesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBC01CD8080100A61F1B /* PurchasesViewModel.m */; };
 		1EE2FBC41CD80D9D00A61F1B /* CardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBC31CD80D9D00A61F1B /* CardViewModel.m */; };
 		1EE2FBC71CD80E0000A61F1B /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBC61CD80E0000A61F1B /* CardCell.m */; };
-		1EE2FBCC1CD93AF000A61F1B /* CreditResponse+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBC91CD93AF000A61F1B /* CreditResponse+CoreDataProperties.m */; };
-		1EE2FBCD1CD93AF000A61F1B /* CreditResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBCB1CD93AF000A61F1B /* CreditResponse.m */; };
 		1EE2FBD01CD93FF600A61F1B /* CreditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBCF1CD93FF600A61F1B /* CreditController.m */; };
 		1EE2FBD31CD9400800A61F1B /* CreditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBD21CD9400800A61F1B /* CreditCell.m */; };
 		1EE2FBD61CD9401300A61F1B /* CreditViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBD51CD9401300A61F1B /* CreditViewModel.m */; };
 		1EE2FBDA1CE1054F00A61F1B /* JSCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBD81CE1054F00A61F1B /* JSCardView.m */; };
 		1EE2FBDB1CE1054F00A61F1B /* JSCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EE2FBD91CE1054F00A61F1B /* JSCardView.xib */; };
-		1EE2FBE11CE14DE800A61F1B /* JSMercuryAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBE01CE14DE800A61F1B /* JSMercuryAddress.m */; };
 		1EE2FBE41CE1538700A61F1B /* JSCheckoutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBE31CE1538700A61F1B /* JSCheckoutController.m */; };
-		1EE2FBE71CE1539F00A61F1B /* JSPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBE61CE1539F00A61F1B /* JSPresentationController.m */; };
+		1EE2FBEA1CE25BBA00A61F1B /* JSPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBE91CE25BBA00A61F1B /* JSPresentationController.m */; };
+		1EE2FBED1CE25BD200A61F1B /* JSAnimationTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBEC1CE25BD200A61F1B /* JSAnimationTransitionController.m */; };
+		1EE2FBF01CE25BEC00A61F1B /* JSCheckoutPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBEF1CE25BEC00A61F1B /* JSCheckoutPresentationController.m */; };
+		1EE2FBF21CE25D9600A61F1B /* JSCheckoutController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EE2FBF11CE25D9600A61F1B /* JSCheckoutController.storyboard */; };
+		1EE2FBF51CE2814000A61F1B /* JSCheckoutCardBillingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBF41CE2814000A61F1B /* JSCheckoutCardBillingCell.m */; };
+		1EE2FBF81CE2815400A61F1B /* JSCheckoutShippingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBF71CE2815400A61F1B /* JSCheckoutShippingCell.m */; };
+		1EE2FBFB1CE2816400A61F1B /* JSCheckoutOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBFA1CE2816400A61F1B /* JSCheckoutOrderCell.m */; };
+		1EE2FBFE1CE282B300A61F1B /* JSCheckoutSubmitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FBFD1CE282B300A61F1B /* JSCheckoutSubmitCell.m */; };
+		1EE2FC011CE2891A00A61F1B /* JSCheckoutCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FC001CE2891A00A61F1B /* JSCheckoutCompanyCell.m */; };
+		1EE2FC041CE2926D00A61F1B /* JSCheckoutAddressEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FC031CE2926D00A61F1B /* JSCheckoutAddressEntryController.m */; };
+		1EE2FC071CE39EF600A61F1B /* JSCheckoutAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FC061CE39EF600A61F1B /* JSCheckoutAddressController.m */; };
+		1EE2FC0D1CE3B10D00A61F1B /* JSCheckoutAddressViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FC0C1CE3B10D00A61F1B /* JSCheckoutAddressViewModel.m */; };
+		1EE2FC121CE3C2A900A61F1B /* Address+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FC0F1CE3C2A900A61F1B /* Address+CoreDataProperties.m */; };
+		1EE2FC131CE3C2A900A61F1B /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FC111CE3C2A900A61F1B /* Address.m */; };
+		1EE2FC161CE3E50500A61F1B /* JSCheckoutCardBillingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FC151CE3E50500A61F1B /* JSCheckoutCardBillingController.m */; };
+		1EE2FC191CE4E55B00A61F1B /* JSMercuryCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FC181CE4E55B00A61F1B /* JSMercuryCardController.m */; };
+		1EE2FC1B1CE4E56600A61F1B /* JSMercuryCardController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EE2FC1A1CE4E56600A61F1B /* JSMercuryCardController.storyboard */; };
+		1EE2FC201CE4FD9200A61F1B /* CreditResponse+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FC1D1CE4FD9200A61F1B /* CreditResponse+CoreDataProperties.m */; };
+		1EE2FC211CE4FD9200A61F1B /* CreditResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE2FC1F1CE4FD9200A61F1B /* CreditResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,8 +187,6 @@
 		1EE2FBB41CD7FA6700A61F1B /* PurchasesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasesController.m; sourceTree = "<group>"; };
 		1EE2FBB61CD7FA7700A61F1B /* InitializeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitializeController.h; sourceTree = "<group>"; };
 		1EE2FBB71CD7FA7700A61F1B /* InitializeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitializeController.m; sourceTree = "<group>"; };
-		1EE2FBB91CD7FA8100A61F1B /* CardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardController.h; sourceTree = "<group>"; };
-		1EE2FBBA1CD7FA8100A61F1B /* CardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardController.m; sourceTree = "<group>"; };
 		1EE2FBBC1CD7FACE00A61F1B /* PurchasesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasesCell.h; sourceTree = "<group>"; };
 		1EE2FBBD1CD7FACE00A61F1B /* PurchasesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasesCell.m; sourceTree = "<group>"; };
 		1EE2FBBF1CD8080100A61F1B /* PurchasesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasesViewModel.h; sourceTree = "<group>"; };
@@ -183,10 +195,6 @@
 		1EE2FBC31CD80D9D00A61F1B /* CardViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewModel.m; sourceTree = "<group>"; };
 		1EE2FBC51CD80E0000A61F1B /* CardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCell.h; sourceTree = "<group>"; };
 		1EE2FBC61CD80E0000A61F1B /* CardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCell.m; sourceTree = "<group>"; };
-		1EE2FBC81CD93AF000A61F1B /* CreditResponse+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CreditResponse+CoreDataProperties.h"; sourceTree = "<group>"; };
-		1EE2FBC91CD93AF000A61F1B /* CreditResponse+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CreditResponse+CoreDataProperties.m"; sourceTree = "<group>"; };
-		1EE2FBCA1CD93AF000A61F1B /* CreditResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditResponse.h; sourceTree = "<group>"; };
-		1EE2FBCB1CD93AF000A61F1B /* CreditResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditResponse.m; sourceTree = "<group>"; };
 		1EE2FBCE1CD93FF600A61F1B /* CreditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditController.h; sourceTree = "<group>"; };
 		1EE2FBCF1CD93FF600A61F1B /* CreditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditController.m; sourceTree = "<group>"; };
 		1EE2FBD11CD9400800A61F1B /* CreditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditCell.h; sourceTree = "<group>"; };
@@ -196,12 +204,44 @@
 		1EE2FBD71CE1054F00A61F1B /* JSCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCardView.h; sourceTree = "<group>"; };
 		1EE2FBD81CE1054F00A61F1B /* JSCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCardView.m; sourceTree = "<group>"; };
 		1EE2FBD91CE1054F00A61F1B /* JSCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSCardView.xib; sourceTree = "<group>"; };
-		1EE2FBDF1CE14DE800A61F1B /* JSMercuryAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMercuryAddress.h; sourceTree = "<group>"; };
-		1EE2FBE01CE14DE800A61F1B /* JSMercuryAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMercuryAddress.m; sourceTree = "<group>"; };
 		1EE2FBE21CE1538700A61F1B /* JSCheckoutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutController.h; sourceTree = "<group>"; };
 		1EE2FBE31CE1538700A61F1B /* JSCheckoutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutController.m; sourceTree = "<group>"; };
-		1EE2FBE51CE1539F00A61F1B /* JSPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSPresentationController.h; sourceTree = "<group>"; };
-		1EE2FBE61CE1539F00A61F1B /* JSPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSPresentationController.m; sourceTree = "<group>"; };
+		1EE2FBE81CE25BBA00A61F1B /* JSPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSPresentationController.h; sourceTree = "<group>"; };
+		1EE2FBE91CE25BBA00A61F1B /* JSPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSPresentationController.m; sourceTree = "<group>"; };
+		1EE2FBEB1CE25BD200A61F1B /* JSAnimationTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSAnimationTransitionController.h; sourceTree = "<group>"; };
+		1EE2FBEC1CE25BD200A61F1B /* JSAnimationTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSAnimationTransitionController.m; sourceTree = "<group>"; };
+		1EE2FBEE1CE25BEC00A61F1B /* JSCheckoutPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutPresentationController.h; sourceTree = "<group>"; };
+		1EE2FBEF1CE25BEC00A61F1B /* JSCheckoutPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutPresentationController.m; sourceTree = "<group>"; };
+		1EE2FBF11CE25D9600A61F1B /* JSCheckoutController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JSCheckoutController.storyboard; sourceTree = "<group>"; };
+		1EE2FBF31CE2814000A61F1B /* JSCheckoutCardBillingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutCardBillingCell.h; sourceTree = "<group>"; };
+		1EE2FBF41CE2814000A61F1B /* JSCheckoutCardBillingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutCardBillingCell.m; sourceTree = "<group>"; };
+		1EE2FBF61CE2815400A61F1B /* JSCheckoutShippingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutShippingCell.h; sourceTree = "<group>"; };
+		1EE2FBF71CE2815400A61F1B /* JSCheckoutShippingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutShippingCell.m; sourceTree = "<group>"; };
+		1EE2FBF91CE2816400A61F1B /* JSCheckoutOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutOrderCell.h; sourceTree = "<group>"; };
+		1EE2FBFA1CE2816400A61F1B /* JSCheckoutOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutOrderCell.m; sourceTree = "<group>"; };
+		1EE2FBFC1CE282B300A61F1B /* JSCheckoutSubmitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutSubmitCell.h; sourceTree = "<group>"; };
+		1EE2FBFD1CE282B300A61F1B /* JSCheckoutSubmitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutSubmitCell.m; sourceTree = "<group>"; };
+		1EE2FBFF1CE2891A00A61F1B /* JSCheckoutCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutCompanyCell.h; sourceTree = "<group>"; };
+		1EE2FC001CE2891A00A61F1B /* JSCheckoutCompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutCompanyCell.m; sourceTree = "<group>"; };
+		1EE2FC021CE2926D00A61F1B /* JSCheckoutAddressEntryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutAddressEntryController.h; sourceTree = "<group>"; };
+		1EE2FC031CE2926D00A61F1B /* JSCheckoutAddressEntryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutAddressEntryController.m; sourceTree = "<group>"; };
+		1EE2FC051CE39EF600A61F1B /* JSCheckoutAddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutAddressController.h; sourceTree = "<group>"; };
+		1EE2FC061CE39EF600A61F1B /* JSCheckoutAddressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutAddressController.m; sourceTree = "<group>"; };
+		1EE2FC0B1CE3B10D00A61F1B /* JSCheckoutAddressViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutAddressViewModel.h; sourceTree = "<group>"; };
+		1EE2FC0C1CE3B10D00A61F1B /* JSCheckoutAddressViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutAddressViewModel.m; sourceTree = "<group>"; };
+		1EE2FC0E1CE3C2A900A61F1B /* Address+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Address+CoreDataProperties.h"; sourceTree = "<group>"; };
+		1EE2FC0F1CE3C2A900A61F1B /* Address+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Address+CoreDataProperties.m"; sourceTree = "<group>"; };
+		1EE2FC101CE3C2A900A61F1B /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		1EE2FC111CE3C2A900A61F1B /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		1EE2FC141CE3E50500A61F1B /* JSCheckoutCardBillingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCheckoutCardBillingController.h; sourceTree = "<group>"; };
+		1EE2FC151CE3E50500A61F1B /* JSCheckoutCardBillingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCheckoutCardBillingController.m; sourceTree = "<group>"; };
+		1EE2FC171CE4E55B00A61F1B /* JSMercuryCardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMercuryCardController.h; sourceTree = "<group>"; };
+		1EE2FC181CE4E55B00A61F1B /* JSMercuryCardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMercuryCardController.m; sourceTree = "<group>"; };
+		1EE2FC1A1CE4E56600A61F1B /* JSMercuryCardController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JSMercuryCardController.storyboard; sourceTree = "<group>"; };
+		1EE2FC1C1CE4FD9200A61F1B /* CreditResponse+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CreditResponse+CoreDataProperties.h"; sourceTree = "<group>"; };
+		1EE2FC1D1CE4FD9200A61F1B /* CreditResponse+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CreditResponse+CoreDataProperties.m"; sourceTree = "<group>"; };
+		1EE2FC1E1CE4FD9200A61F1B /* CreditResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditResponse.h; sourceTree = "<group>"; };
+		1EE2FC1F1CE4FD9200A61F1B /* CreditResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,27 +296,8 @@
 			children = (
 				1EB01C251CC59C8C006D83FD /* AppDelegate.h */,
 				1EB01C261CC59C8C006D83FD /* AppDelegate.m */,
-				1EE2FBB31CD7FA6700A61F1B /* PurchasesController.h */,
-				1EE2FBB41CD7FA6700A61F1B /* PurchasesController.m */,
-				1EE2FBBF1CD8080100A61F1B /* PurchasesViewModel.h */,
-				1EE2FBC01CD8080100A61F1B /* PurchasesViewModel.m */,
-				1EE2FBBC1CD7FACE00A61F1B /* PurchasesCell.h */,
-				1EE2FBBD1CD7FACE00A61F1B /* PurchasesCell.m */,
-				1EE2FBB61CD7FA7700A61F1B /* InitializeController.h */,
-				1EE2FBB71CD7FA7700A61F1B /* InitializeController.m */,
-				1EE2FBB91CD7FA8100A61F1B /* CardController.h */,
-				1EE2FBBA1CD7FA8100A61F1B /* CardController.m */,
-				1EE2FBC51CD80E0000A61F1B /* CardCell.h */,
-				1EE2FBC61CD80E0000A61F1B /* CardCell.m */,
-				1EE2FBC21CD80D9D00A61F1B /* CardViewModel.h */,
-				1EE2FBC31CD80D9D00A61F1B /* CardViewModel.m */,
-				1EE2FBCE1CD93FF600A61F1B /* CreditController.h */,
-				1EE2FBCF1CD93FF600A61F1B /* CreditController.m */,
-				1EE2FBD11CD9400800A61F1B /* CreditCell.h */,
-				1EE2FBD21CD9400800A61F1B /* CreditCell.m */,
-				1EE2FBD41CD9401300A61F1B /* CreditViewModel.h */,
-				1EE2FBD51CD9401300A61F1B /* CreditViewModel.m */,
-				1EE2FB5A1CD4085500A61F1B /* JSMercury */,
+				1EE2FC221CE5093B00A61F1B /* Demo */,
+				1EE2FB5A1CD4085500A61F1B /* SDK */,
 				1EB01C2B1CC59C8C006D83FD /* Main.storyboard */,
 				1EB01C311CC59C8C006D83FD /* Assets.xcassets */,
 				1EB01C331CC59C8C006D83FD /* LaunchScreen.storyboard */,
@@ -312,7 +333,7 @@
 			path = MercurySDKUITests;
 			sourceTree = "<group>";
 		};
-		1EE2FB5A1CD4085500A61F1B /* JSMercury */ = {
+		1EE2FB5A1CD4085500A61F1B /* SDK */ = {
 			isa = PBXGroup;
 			children = (
 				1EE2FB121CD4084D00A61F1B /* HCMercuryHelper.h */,
@@ -356,8 +377,6 @@
 				1EE2FB381CD4084D00A61F1B /* JSMercuryUtility.m */,
 				1EE2FB391CD4084D00A61F1B /* JSMercuryVerify.h */,
 				1EE2FB3A1CD4084D00A61F1B /* JSMercuryVerify.m */,
-				1EE2FBDF1CE14DE800A61F1B /* JSMercuryAddress.h */,
-				1EE2FBE01CE14DE800A61F1B /* JSMercuryAddress.m */,
 				1EE2FB3B1CD4084D00A61F1B /* JSMercuryVerifyCardInfo.h */,
 				1EE2FB3C1CD4084D00A61F1B /* JSMercuryVerifyCardInfo.m */,
 				1EE2FB3D1CD4084D00A61F1B /* JSMercuryVerifyPayment.h */,
@@ -365,20 +384,13 @@
 				1EE2FB3F1CD4084D00A61F1B /* JSMercuryWebViewController.h */,
 				1EE2FB401CD4084D00A61F1B /* JSMercuryWebViewController.m */,
 				1EE2FB411CD4084D00A61F1B /* JSMercuryWebViewStoryboard.storyboard */,
-				1EE2FBE21CE1538700A61F1B /* JSCheckoutController.h */,
-				1EE2FBE31CE1538700A61F1B /* JSCheckoutController.m */,
-				1EE2FBE51CE1539F00A61F1B /* JSPresentationController.h */,
-				1EE2FBE61CE1539F00A61F1B /* JSPresentationController.m */,
-				1EE2FBD71CE1054F00A61F1B /* JSCardView.h */,
-				1EE2FBD81CE1054F00A61F1B /* JSCardView.m */,
-				1EE2FBD91CE1054F00A61F1B /* JSCardView.xib */,
 				1EE2FB711CD419C200A61F1B /* NSManagedObjectContext+Properties.h */,
 				1EE2FB721CD419C200A61F1B /* NSManagedObjectContext+Properties.m */,
 				1EE2FB731CD419C200A61F1B /* NSManagedObject+Properties.h */,
 				1EE2FB741CD419C200A61F1B /* NSManagedObject+Properties.m */,
 				1EE2FB5E1CD40E7E00A61F1B /* CoreData */,
 			);
-			name = JSMercury;
+			name = SDK;
 			sourceTree = "<group>";
 		};
 		1EE2FB5E1CD40E7E00A61F1B /* CoreData */ = {
@@ -387,10 +399,14 @@
 				1EE2FB5B1CD409F800A61F1B /* JSMercuryCoreDataController.h */,
 				1EE2FB5C1CD409F800A61F1B /* JSMercuryCoreDataController.m */,
 				1EB01C2E1CC59C8C006D83FD /* MercurySDK.xcdatamodeld */,
-				1EE2FBC81CD93AF000A61F1B /* CreditResponse+CoreDataProperties.h */,
-				1EE2FBC91CD93AF000A61F1B /* CreditResponse+CoreDataProperties.m */,
-				1EE2FBCA1CD93AF000A61F1B /* CreditResponse.h */,
-				1EE2FBCB1CD93AF000A61F1B /* CreditResponse.m */,
+				1EE2FC1C1CE4FD9200A61F1B /* CreditResponse+CoreDataProperties.h */,
+				1EE2FC1D1CE4FD9200A61F1B /* CreditResponse+CoreDataProperties.m */,
+				1EE2FC1E1CE4FD9200A61F1B /* CreditResponse.h */,
+				1EE2FC1F1CE4FD9200A61F1B /* CreditResponse.m */,
+				1EE2FC0E1CE3C2A900A61F1B /* Address+CoreDataProperties.h */,
+				1EE2FC0F1CE3C2A900A61F1B /* Address+CoreDataProperties.m */,
+				1EE2FC101CE3C2A900A61F1B /* Address.h */,
+				1EE2FC111CE3C2A900A61F1B /* Address.m */,
 				1EE2FB9B1CD41E3500A61F1B /* VerifyPayment+CoreDataProperties.h */,
 				1EE2FB9C1CD41E3500A61F1B /* VerifyPayment+CoreDataProperties.m */,
 				1EE2FBAF1CD41E6E00A61F1B /* VerifyPayment.h */,
@@ -405,6 +421,64 @@
 				1EE2FBA61CD41E3500A61F1B /* VerifyCardInfo.m */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		1EE2FC221CE5093B00A61F1B /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				1EE2FBB31CD7FA6700A61F1B /* PurchasesController.h */,
+				1EE2FBB41CD7FA6700A61F1B /* PurchasesController.m */,
+				1EE2FBBF1CD8080100A61F1B /* PurchasesViewModel.h */,
+				1EE2FBC01CD8080100A61F1B /* PurchasesViewModel.m */,
+				1EE2FBBC1CD7FACE00A61F1B /* PurchasesCell.h */,
+				1EE2FBBD1CD7FACE00A61F1B /* PurchasesCell.m */,
+				1EE2FBB61CD7FA7700A61F1B /* InitializeController.h */,
+				1EE2FBB71CD7FA7700A61F1B /* InitializeController.m */,
+				1EE2FBC51CD80E0000A61F1B /* CardCell.h */,
+				1EE2FBC61CD80E0000A61F1B /* CardCell.m */,
+				1EE2FBC21CD80D9D00A61F1B /* CardViewModel.h */,
+				1EE2FBC31CD80D9D00A61F1B /* CardViewModel.m */,
+				1EE2FBCE1CD93FF600A61F1B /* CreditController.h */,
+				1EE2FBCF1CD93FF600A61F1B /* CreditController.m */,
+				1EE2FBD11CD9400800A61F1B /* CreditCell.h */,
+				1EE2FBD21CD9400800A61F1B /* CreditCell.m */,
+				1EE2FBD41CD9401300A61F1B /* CreditViewModel.h */,
+				1EE2FBD51CD9401300A61F1B /* CreditViewModel.m */,
+				1EE2FBE21CE1538700A61F1B /* JSCheckoutController.h */,
+				1EE2FBE31CE1538700A61F1B /* JSCheckoutController.m */,
+				1EE2FBF11CE25D9600A61F1B /* JSCheckoutController.storyboard */,
+				1EE2FC141CE3E50500A61F1B /* JSCheckoutCardBillingController.h */,
+				1EE2FC151CE3E50500A61F1B /* JSCheckoutCardBillingController.m */,
+				1EE2FC051CE39EF600A61F1B /* JSCheckoutAddressController.h */,
+				1EE2FC061CE39EF600A61F1B /* JSCheckoutAddressController.m */,
+				1EE2FC0B1CE3B10D00A61F1B /* JSCheckoutAddressViewModel.h */,
+				1EE2FC0C1CE3B10D00A61F1B /* JSCheckoutAddressViewModel.m */,
+				1EE2FC021CE2926D00A61F1B /* JSCheckoutAddressEntryController.h */,
+				1EE2FC031CE2926D00A61F1B /* JSCheckoutAddressEntryController.m */,
+				1EE2FBFF1CE2891A00A61F1B /* JSCheckoutCompanyCell.h */,
+				1EE2FC001CE2891A00A61F1B /* JSCheckoutCompanyCell.m */,
+				1EE2FBF31CE2814000A61F1B /* JSCheckoutCardBillingCell.h */,
+				1EE2FBF41CE2814000A61F1B /* JSCheckoutCardBillingCell.m */,
+				1EE2FBF61CE2815400A61F1B /* JSCheckoutShippingCell.h */,
+				1EE2FBF71CE2815400A61F1B /* JSCheckoutShippingCell.m */,
+				1EE2FBF91CE2816400A61F1B /* JSCheckoutOrderCell.h */,
+				1EE2FBFA1CE2816400A61F1B /* JSCheckoutOrderCell.m */,
+				1EE2FBFC1CE282B300A61F1B /* JSCheckoutSubmitCell.h */,
+				1EE2FBFD1CE282B300A61F1B /* JSCheckoutSubmitCell.m */,
+				1EE2FBEB1CE25BD200A61F1B /* JSAnimationTransitionController.h */,
+				1EE2FBEC1CE25BD200A61F1B /* JSAnimationTransitionController.m */,
+				1EE2FBE81CE25BBA00A61F1B /* JSPresentationController.h */,
+				1EE2FBE91CE25BBA00A61F1B /* JSPresentationController.m */,
+				1EE2FBEE1CE25BEC00A61F1B /* JSCheckoutPresentationController.h */,
+				1EE2FBEF1CE25BEC00A61F1B /* JSCheckoutPresentationController.m */,
+				1EE2FC171CE4E55B00A61F1B /* JSMercuryCardController.h */,
+				1EE2FC181CE4E55B00A61F1B /* JSMercuryCardController.m */,
+				1EE2FC1A1CE4E56600A61F1B /* JSMercuryCardController.storyboard */,
+				1EE2FBD71CE1054F00A61F1B /* JSCardView.h */,
+				1EE2FBD81CE1054F00A61F1B /* JSCardView.m */,
+				1EE2FBD91CE1054F00A61F1B /* JSCardView.xib */,
+			);
+			name = Demo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -510,12 +584,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EE2FBF21CE25D9600A61F1B /* JSCheckoutController.storyboard in Resources */,
 				1EE2FBB01CD4226C00A61F1B /* MercurySDK.xcdatamodeld in Resources */,
 				1EB01C351CC59C8C006D83FD /* LaunchScreen.storyboard in Resources */,
 				1EB01C321CC59C8C006D83FD /* Assets.xcassets in Resources */,
 				1EE2FBDB1CE1054F00A61F1B /* JSCardView.xib in Resources */,
 				1EE2FB591CD4084D00A61F1B /* JSMercuryWebViewStoryboard.storyboard in Resources */,
 				1EB01C2D1CC59C8C006D83FD /* Main.storyboard in Resources */,
+				1EE2FC1B1CE4E56600A61F1B /* JSMercuryCardController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,10 +616,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EE2FBED1CE25BD200A61F1B /* JSAnimationTransitionController.m in Sources */,
 				1EE2FBAA1CD41E3500A61F1B /* Verify.m in Sources */,
 				1EE2FBB81CD7FA7700A61F1B /* InitializeController.m in Sources */,
 				1EE2FBAB1CD41E3500A61F1B /* VerifyCardInfo+CoreDataProperties.m in Sources */,
-				1EE2FBCC1CD93AF000A61F1B /* CreditResponse+CoreDataProperties.m in Sources */,
+				1EE2FC071CE39EF600A61F1B /* JSCheckoutAddressController.m in Sources */,
 				1EE2FBD31CD9400800A61F1B /* CreditCell.m in Sources */,
 				1EE2FB4E1CD4084D00A61F1B /* JSMercuryCreditTokenVoidSale.m in Sources */,
 				1EE2FB461CD4084D00A61F1B /* JSMercuryCreditTokenAdjust.m in Sources */,
@@ -551,30 +628,39 @@
 				1EE2FB4A1CD4084D00A61F1B /* JSMercuryCreditTokenReturn.m in Sources */,
 				1EE2FBD61CD9401300A61F1B /* CreditViewModel.m in Sources */,
 				1EE2FBAE1CD41E5700A61F1B /* VerifyPayment.m in Sources */,
-				1EE2FBBB1CD7FA8100A61F1B /* CardController.m in Sources */,
+				1EE2FC0D1CE3B10D00A61F1B /* JSCheckoutAddressViewModel.m in Sources */,
+				1EE2FC161CE3E50500A61F1B /* JSCheckoutCardBillingController.m in Sources */,
 				1EE2FBBE1CD7FACE00A61F1B /* PurchasesCell.m in Sources */,
 				1EE2FB511CD4084D00A61F1B /* JSMercuryInitializeCardInfo.m in Sources */,
 				1EE2FB441CD4084D00A61F1B /* JSMercuryConstants.m in Sources */,
 				1EE2FBDA1CE1054F00A61F1B /* JSCardView.m in Sources */,
 				1EE2FB541CD4084D00A61F1B /* JSMercuryUtility.m in Sources */,
+				1EE2FBF81CE2815400A61F1B /* JSCheckoutShippingCell.m in Sources */,
 				1EE2FBB51CD7FA6700A61F1B /* PurchasesController.m in Sources */,
-				1EE2FBE11CE14DE800A61F1B /* JSMercuryAddress.m in Sources */,
-				1EE2FBE71CE1539F00A61F1B /* JSPresentationController.m in Sources */,
+				1EE2FC211CE4FD9200A61F1B /* CreditResponse.m in Sources */,
+				1EE2FBEA1CE25BBA00A61F1B /* JSPresentationController.m in Sources */,
 				1EE2FB531CD4084D00A61F1B /* JSMercuryInitializeResponse.m in Sources */,
+				1EE2FBF51CE2814000A61F1B /* JSCheckoutCardBillingCell.m in Sources */,
 				1EE2FBC41CD80D9D00A61F1B /* CardViewModel.m in Sources */,
-				1EE2FBCD1CD93AF000A61F1B /* CreditResponse.m in Sources */,
+				1EE2FC191CE4E55B00A61F1B /* JSMercuryCardController.m in Sources */,
 				1EE2FB551CD4084D00A61F1B /* JSMercuryVerify.m in Sources */,
+				1EE2FC201CE4FD9200A61F1B /* CreditResponse+CoreDataProperties.m in Sources */,
 				1EE2FB471CD4084D00A61F1B /* JSMercuryCreditTokenPreAuth.m in Sources */,
 				1EE2FB561CD4084D00A61F1B /* JSMercuryVerifyCardInfo.m in Sources */,
 				1EE2FB571CD4084D00A61F1B /* JSMercuryVerifyPayment.m in Sources */,
 				1EE2FB491CD4084D00A61F1B /* JSMercuryCreditTokenResponse.m in Sources */,
 				1EE2FBA71CD41E3500A61F1B /* VerifyPayment+CoreDataProperties.m in Sources */,
+				1EE2FBF01CE25BEC00A61F1B /* JSCheckoutPresentationController.m in Sources */,
 				1EE2FB421CD4084D00A61F1B /* HCMercuryHelper.m in Sources */,
+				1EE2FBFE1CE282B300A61F1B /* JSCheckoutSubmitCell.m in Sources */,
 				1EB01C301CC59C8C006D83FD /* MercurySDK.xcdatamodeld in Sources */,
 				1EE2FB751CD419C200A61F1B /* NSManagedObjectContext+Properties.m in Sources */,
 				1EE2FB4B1CD4084D00A61F1B /* JSMercuryCreditTokenReversal.m in Sources */,
+				1EE2FC011CE2891A00A61F1B /* JSCheckoutCompanyCell.m in Sources */,
+				1EE2FC131CE3C2A900A61F1B /* Address.m in Sources */,
 				1EE2FB581CD4084D00A61F1B /* JSMercuryWebViewController.m in Sources */,
 				1EB01C271CC59C8C006D83FD /* AppDelegate.m in Sources */,
+				1EE2FBFB1CE2816400A61F1B /* JSCheckoutOrderCell.m in Sources */,
 				1EE2FB4C1CD4084D00A61F1B /* JSMercuryCreditTokenSale.m in Sources */,
 				1EE2FB5D1CD409F800A61F1B /* JSMercuryCoreDataController.m in Sources */,
 				1EE2FB4F1CD4084D00A61F1B /* JSMercuryError.m in Sources */,
@@ -582,12 +668,14 @@
 				1EE2FBAC1CD41E3500A61F1B /* VerifyCardInfo.m in Sources */,
 				1EE2FB481CD4084D00A61F1B /* JSMercuryCreditTokenPreAuthCapture.m in Sources */,
 				1EE2FB4D1CD4084D00A61F1B /* JSMercuryCreditTokenVoidReturn.m in Sources */,
+				1EE2FC041CE2926D00A61F1B /* JSCheckoutAddressEntryController.m in Sources */,
 				1EE2FB451CD4084D00A61F1B /* JSMercuryCreditToken.m in Sources */,
 				1EE2FBC11CD8080100A61F1B /* PurchasesViewModel.m in Sources */,
 				1EE2FB521CD4084D00A61F1B /* JSMercuryInitializePayment.m in Sources */,
 				1EE2FB761CD419C200A61F1B /* NSManagedObject+Properties.m in Sources */,
 				1EE2FBA91CD41E3500A61F1B /* Verify+CoreDataProperties.m in Sources */,
 				1EE2FBE41CE1538700A61F1B /* JSCheckoutController.m in Sources */,
+				1EE2FC121CE3C2A900A61F1B /* Address+CoreDataProperties.m in Sources */,
 				1EE2FBD01CD93FF600A61F1B /* CreditController.m in Sources */,
 				1EE2FB501CD4084D00A61F1B /* JSMercuryInitialize.m in Sources */,
 				1EE2FB431CD4084D00A61F1B /* JSMercury.m in Sources */,

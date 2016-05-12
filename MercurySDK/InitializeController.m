@@ -10,6 +10,7 @@
 #import "JSMercuryInitializePayment.h"
 #import "JSMercuryInitializeCardInfo.h"
 #import "JSMercuryWebViewController.h"
+#import "JSCheckoutController.h"
 
 @interface InitializeController () <JSMercuryWebViewDelegate>
 
@@ -36,29 +37,12 @@
 }
 
 - (IBAction)verifyPayment:(id)sender {
-    JSMercuryInitializePayment *payment = [JSMercuryInitializePayment js_init];
-    [payment setTotalAmount:@2];
-    [payment setInvoice:@"012345"];
-    [payment js_mercury_transaction:^(UINavigationController *navigationController, id webController, NSError *error) {
-        if (error) {
-            return;
-        }
-        
-        [webController setDelegate:self];
-        [self presentViewController:navigationController animated:YES completion:nil];
-    }];
-}
-
-- (IBAction)verifyCardInfo:(id)sender {
-    JSMercuryInitializeCardInfo *payment = [JSMercuryInitializeCardInfo js_init];
-    [payment js_mercury_transaction:^(UINavigationController *navigationController, id webController, NSError *error) {
-        if (error) {
-            return;
-        }
-        
-        [webController setDelegate:self];
-        [self presentViewController:navigationController animated:YES completion:nil];
-    }];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"JSCheckoutController" bundle:nil];
+    JSCheckoutController *checkout = [storyboard instantiateInitialViewController];
+    checkout.taxAmount = @(9.99);
+    checkout.shippingAmount = @(20);
+    checkout.subtotalAmount = @(100);
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:checkout] animated:YES completion:nil];
 }
 
 /*

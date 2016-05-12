@@ -1,22 +1,22 @@
 //
-//  CardController.m
+//  JSMercuryCardController.m
 //  MercurySDK
 //
-//  Created by John Setting on 5/2/16.
+//  Created by John Setting on 5/12/16.
 //  Copyright © 2016 John Setting. All rights reserved.
 //
 
-#import "CardController.h"
+#import "JSMercuryCardController.h"
 #import "CardViewModel.h"
-#import "JSMercury.h"
-#import "NSManagedObject+Properties.h"
+#import "CardCell.h"
 #import "JSMercuryInitializeCardInfo.h"
+#import "NSManagedObject+Properties.h"
 
-@interface CardController () <UITableViewDelegate, UITableViewDataSource, CardViewModelDelegate>
+@interface JSMercuryCardController () <UITableViewDelegate, UITableViewDataSource, CardViewModelDelegate>
 @property (strong, nonatomic, nonnull) CardViewModel *model;
 @end
 
-@implementation CardController
+@implementation JSMercuryCardController
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (!(self = [super initWithCoder:aDecoder])) return nil;
@@ -60,6 +60,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         VerifyCardInfo *card = [[self.model cards] objectAtIndex:indexPath.row];
+        if (self.selection) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(JSMercuryCardController:didSelectCard:)]) {
+                [self.delegate JSMercuryCardController:self didSelectCard:card];
+                return;
+            }
+        }
         [self deleteCard:card];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         return;
@@ -106,18 +112,8 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)cardViewModel:(CardViewModel *)model didFinishLoadingCards:(NSArray<VerifyCardInfo *> *)cards error:(NSError *)error {
+- (void)CardViewModel:(CardViewModel *)model didFinishLoadingCards:(NSArray<VerifyCardInfo *> *)cards error:(NSError *)error {
     [self.tableView reloadData];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

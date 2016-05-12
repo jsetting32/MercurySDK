@@ -158,11 +158,12 @@
     return versionBuild;
 }
 
-+ (void)showAlert:(id)target card:(JSMercuryVerify *)payment {
++ (void)showAlert:(id)target creditResponse:(nonnull CreditResponse *)response {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Actions" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *adjust = [UIAlertAction actionWithTitle:@"Adjust" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenAdjust *a = [[JSMercuryCreditTokenAdjust alloc] initWithToken:payment.token];
+        JSMercuryCreditTokenAdjust *a = [[JSMercuryCreditTokenAdjust alloc] initWithToken:response.token];
         [a js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"%@", [error description]);
             NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
@@ -172,8 +173,9 @@
         }];
     }];
     UIAlertAction *preauth = [UIAlertAction actionWithTitle:@"PreAuth" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenPreAuth *preAuth = [[JSMercuryCreditTokenPreAuth alloc] initWithToken:payment.token];
+        JSMercuryCreditTokenPreAuth *preAuth = [[JSMercuryCreditTokenPreAuth alloc] initWithToken:response.token];
         [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"%@", [error description]);
             NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
@@ -183,8 +185,9 @@
         }];
     }];
     UIAlertAction *preauthCapture = [UIAlertAction actionWithTitle:@"PreAuthCapture" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenPreAuthCapture *preAuth = [[JSMercuryCreditTokenPreAuthCapture alloc] initWithToken:payment.token];
+        JSMercuryCreditTokenPreAuthCapture *preAuth = [[JSMercuryCreditTokenPreAuthCapture alloc] initWithToken:response.token];
         [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"%@", [error description]);
             NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
@@ -194,8 +197,9 @@
         }];
     }];
     UIAlertAction *returna = [UIAlertAction actionWithTitle:@"Return" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenReturn *preAuth = [[JSMercuryCreditTokenReturn alloc] initWithToken:payment.token];
+        JSMercuryCreditTokenReturn *preAuth = [[JSMercuryCreditTokenReturn alloc] initWithToken:response.token];
         [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"%@", [error description]);
             NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
@@ -205,8 +209,15 @@
         }];
     }];
     UIAlertAction *reversal = [UIAlertAction actionWithTitle:@"Reversal" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenReversal *preAuth = [[JSMercuryCreditTokenReversal alloc] initWithToken:payment.token];
-        [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
+        JSMercuryCreditTokenReversal *reversal = [[JSMercuryCreditTokenReversal alloc] initWithToken:response.token];
+        reversal.authCode = response.authCode;
+        reversal.refNo = response.refNo;
+        reversal.acqRefData = response.acqRefData;
+        reversal.invoice = response.invoice;
+        reversal.processData = response.processData;
+        reversal.purchaseAmount = response.purchaseAmount;
+        [reversal js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"%@", [error description]);
             NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
@@ -217,10 +228,11 @@
         
     }];
     UIAlertAction *sale = [UIAlertAction actionWithTitle:@"Sale" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenSale *preAuth = [[JSMercuryCreditTokenSale alloc] initWithToken:payment.token];
+        JSMercuryCreditTokenSale *preAuth = [[JSMercuryCreditTokenSale alloc] initWithToken:response.token];
         preAuth.purchaseAmount = @10;
         preAuth.invoice = @"1234";
         [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"%@", [error description]);
             NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
@@ -230,8 +242,9 @@
         
     }];
     UIAlertAction *voidSale = [UIAlertAction actionWithTitle:@"VoidSale" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenVoidSale *preAuth = [[JSMercuryCreditTokenVoidSale alloc] initWithToken:payment.token];
+        JSMercuryCreditTokenVoidSale *preAuth = [[JSMercuryCreditTokenVoidSale alloc] initWithToken:response.token];
         [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"%@", [error description]);
             NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
@@ -242,8 +255,9 @@
         
     }];
     UIAlertAction *voidReturn = [UIAlertAction actionWithTitle:@"VoidReturn" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        JSMercuryCreditTokenVoidReturn *preAuth = [[JSMercuryCreditTokenVoidReturn alloc] initWithToken:payment.token];
+        JSMercuryCreditTokenVoidReturn *preAuth = [[JSMercuryCreditTokenVoidReturn alloc] initWithToken:response.token];
         [preAuth js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"%@", [error description]);
             NSString *message = (error) ? [error localizedFailureReason] : @"Successfully made transaction action";
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
@@ -266,6 +280,13 @@
     [alert addAction:cancel];
     
     [target presentViewController:alert animated:YES completion:nil];
+}
+
++ (NSString *)formattedCardBillingInformation:(VerifyCardInfo *)card address:(Address *)address {
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:[NSString stringWithFormat:@"%@ %@", card.maskedAccount, card.formattedExpDate]];
+    [array addObject:address.formattedSingleLineAddress];
+    return [[array componentsJoinedByString:@"\n"] uppercaseString];
 }
 
 @end

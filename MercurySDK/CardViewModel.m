@@ -26,8 +26,8 @@
 - (void)loadCards {
     NSError *error = nil;
     self.cards = [JSMercuryCoreDataController fetchVerifyCardInfoAll:error];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(cardViewModel:didFinishLoadingCards:error:)]) {
-        [self.delegate cardViewModel:self didFinishLoadingCards:self.cards error:error];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(CardViewModel:didFinishLoadingCards:error:)]) {
+        [self.delegate CardViewModel:self didFinishLoadingCards:self.cards error:error];
     }
 }
 

@@ -11,21 +11,16 @@
 #import "CreditCell.h"
 #import "CreditResponse.h"
 
-@interface CreditViewModel()
-@property (strong, nonatomic, nonnull, readwrite) NSArray <CreditResponse *> *credits;
-@end
-
 @implementation CreditViewModel
 
 - (instancetype)init {
     if (!(self = [super init])) return nil;
-    _credits = [NSArray array];
     return self;
 }
 
 - (void)loadCredits {
     NSError *error = nil;
-    self.credits = [JSMercuryCoreDataController fetchCreditResponseAll:error];
+    self.credits = [[JSMercuryCoreDataController fetchCreditResponseAll:error] mutableCopy];
     if (self.delegate && [self.delegate respondsToSelector:@selector(creditViewModel:didFinishLoadingCredits:error:)]) {
         [self.delegate creditViewModel:self didFinishLoadingCredits:self.credits error:error];
     }
@@ -36,7 +31,7 @@
     CreditResponse *card = [self.credits objectAtIndex:indexPath.row];
     [cell.labelRefNo setText:card.refNo];
     [cell.labelToken setText:card.token];
-    [cell.labelAccount setText:card.account];
+    [cell.labelAccount setText:card.action];
     [cell.labelMessage setText:card.message];
     [cell.labelPurchaseAmount setText:card.formattedPurchaseAmount];
     return cell;

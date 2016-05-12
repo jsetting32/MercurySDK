@@ -13,4 +13,5 @@
 + (instancetype)js_softManagedObject:(NSManagedObjectContext *)context;
 + (instancetype)js_hardManagedObject:(NSManagedObjectContext *)context;
 - (BOOL)deleteObject:(NSError **)error;
+- (BOOL)saveObject:(NSError **)error;
 @end

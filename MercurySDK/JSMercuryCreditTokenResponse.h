@@ -6,11 +6,14 @@
 //  Copyright © 2016 John Setting. All rights reserved.
 //
 
-#import "JSMercuryCreditToken.h"
+#import <Foundation/Foundation.h>
 
 @interface JSMercuryCreditTokenResponse : NSObject
 
-- (nullable instancetype)initWithResponse:(nullable NSDictionary *)response;
+- (nullable instancetype)initWithResponse:(nonnull NSDictionary *)response action:(nonnull NSString *)action;
+
+// The action made for the response
+@property (strong, nonatomic, nonnull) NSString *action;
 
 // The masked account number used for the transaction.
 @property (strong, nonatomic, nonnull) NSString *account;

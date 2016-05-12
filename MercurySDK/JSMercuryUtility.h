@@ -11,6 +11,9 @@
 #import "JSMercuryTypeDef.h"
 #import "JSMercuryInitializeResponse.h"
 #import "JSMercuryInitialize.h"
+#import "Address.h"
+#import "VerifyCardInfo.h"
+#import "CreditResponse.h"
 
 @interface JSMercuryUtility : NSObject
 + (nullable instancetype)sharedInstance;
@@ -34,5 +37,6 @@
 + (nonnull NSString *)appVersion;
 + (nonnull NSString *)build;
 + (nonnull NSString *)versionBuild;
-+ (void)showAlert:(nonnull id)target card:(nonnull JSMercuryVerify *)payment;
++ (void)showAlert:(nonnull id)target creditResponse:(nonnull CreditResponse *)response;
++ (nonnull NSString *)formattedCardBillingInformation:(nonnull VerifyCardInfo *)card address:(nonnull Address *)address;
 @end

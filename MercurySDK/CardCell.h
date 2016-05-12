@@ -16,4 +16,5 @@
 @property (assign, nonatomic) BOOL isCard;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewCardType;
 + (NSString *)cellIdentifier;
++ (CGFloat)addressHeight;
 @end

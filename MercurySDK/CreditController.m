@@ -8,6 +8,8 @@
 
 #import "CreditController.h"
 #import "CreditViewModel.h"
+#import "JSMercuryUtility.h"
+#import "NSManagedObject+Properties.h"
 
 @interface CreditController () <UITableViewDelegate, UITableViewDataSource, CreditViewModelDelegate>
 @property (strong, nonatomic, nonnull) CreditViewModel *model;
@@ -52,9 +54,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     CreditResponse *card = [self.model.credits objectAtIndex:indexPath.row];
-    
+    [JSMercuryUtility showAlert:self creditResponse:card];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        CreditResponse *credit = [self.model.credits objectAtIndex:indexPath.row];
+        [credit deleteObject:nil];
+        [self.model.credits removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+    }
+}
 
 /*
 #pragma mark - Navigation

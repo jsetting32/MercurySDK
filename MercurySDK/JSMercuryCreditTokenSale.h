@@ -32,5 +32,5 @@
 // Cardholder Zip. If provided, will be used for address verification.
 @property (strong, nonatomic, nullable) NSString *zip;
 
-- (void)js_mercury_credit_token:(void (^ _Nullable)(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error))completion;
+@property (strong, nonatomic, nonnull, readonly) NSString *vantivFormattedAddress;
 @end

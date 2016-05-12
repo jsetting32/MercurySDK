@@ -13,13 +13,13 @@
 
 @implementation JSMercuryCreditTokenResponse
 
-- (nullable instancetype)initWithResponse:(NSDictionary *)response {
+- (nullable instancetype)initWithResponse:(NSDictionary *)response action:(NSString *)action {
     if (!(self = [super init])) return nil;
-    [self commonInit:response];
+    [self commonInit:response action:action];
     return self;
 }
 
-- (void)commonInit:(NSDictionary *)response {
+- (void)commonInit:(NSDictionary *)response action:(NSString *)action {
     self.account = [response objectForKey:@"Account"];
     self.acqRefData = [response objectForKey:@"AcqRefData"];
     self.authCode = [response objectForKey:@"AuthCode"];
@@ -45,6 +45,8 @@
     self.refNo = [response objectForKey:@"RefNo"];
     self.status = [response objectForKey:@"Status"];
     self.token = [response objectForKey:@"Token"];
+
+    self.action = action;
 }
 
 @end

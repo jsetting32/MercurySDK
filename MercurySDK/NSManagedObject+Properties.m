@@ -56,4 +56,8 @@
     return [context save:error];
 }
 
+- (BOOL)saveObject:(NSError **)error {
+    return [self.managedObjectContext save:error];
+}
+
 @end

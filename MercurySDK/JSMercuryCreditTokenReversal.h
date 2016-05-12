@@ -33,5 +33,4 @@
 // or CreditPreAuthCaptureToken transaction.
 @property (strong, nonatomic, nonnull) NSString *processData;
 
-- (void)js_mercury_credit_token:(void (^ _Nullable)(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error))completion;
 @end

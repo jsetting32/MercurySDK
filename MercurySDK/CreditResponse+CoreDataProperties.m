@@ -2,7 +2,7 @@
 //  CreditResponse+CoreDataProperties.m
 //  MercurySDK
 //
-//  Created by John Setting on 5/3/16.
+//  Created by John Setting on 5/12/16.
 //  Copyright © 2016 John Setting. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -24,10 +24,11 @@
 @dynamic gratuityAmount;
 @dynamic invoice;
 @dynamic message;
+@dynamic processData;
 @dynamic purchaseAmount;
 @dynamic refNo;
 @dynamic status;
 @dynamic token;
-@dynamic processData;
+@dynamic action;
 
 @end

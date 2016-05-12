@@ -33,7 +33,7 @@
     return [formatter stringFromDate:self.expDate];
 }
 
-- (BOOL)isValid { return [self.status isEqualToString:@"Approved"]; }
+- (BOOL)isValid { return [self.status isEqualToString:@"Approved"] && [self.expDate timeIntervalSinceNow] >= 0.0; }
 
 - (NSString *)formattedMaskedAccount {
     return [self.maskedAccount substringFromIndex:MAX((int)[self.maskedAccount length] - 5, 0)];

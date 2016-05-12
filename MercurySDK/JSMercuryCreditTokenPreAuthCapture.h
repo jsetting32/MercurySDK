@@ -36,5 +36,4 @@
 // Format is 99999.99.
 @property (strong, nonatomic, nonnull) NSNumber *taxAmount;
 
-- (void)js_mercury_credit_token:(void (^ _Nullable)(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error))completion;
 @end

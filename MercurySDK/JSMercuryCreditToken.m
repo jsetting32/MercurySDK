@@ -29,6 +29,12 @@
                                  userInfo:nil];
 }
 
+- (void)js_mercury_credit_token:(void (^)(JSMercuryCreditTokenResponse * _Nullable, NSError * _Nullable))completion {
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"%s must be overridden from subclass", __PRETTY_FUNCTION__]
+                                 userInfo:nil];
+}
+
 - (NSMutableDictionary *)generateParameters:(NSMutableArray *)emptyParameters error:(NSError *__autoreleasing  _Nullable *)error
 {
     if ([[[JSMercuryAPIClient sharedClient] production] boolValue]) {

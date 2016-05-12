@@ -21,5 +21,4 @@
 // or the InvoiceNo from a PreAuth for reversal.
 @property (strong, nonatomic, nonnull) NSString *refNo;
 
-- (void)js_mercury_credit_token:(void (^ _Nullable)(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error))completion;
 @end

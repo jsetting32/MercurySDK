@@ -17,5 +17,5 @@
 @end
 
 @protocol CardViewModelDelegate <NSObject>
-- (void)cardViewModel:(nonnull CardViewModel *)model didFinishLoadingCards:(nonnull NSArray <VerifyCardInfo *> *)cards error:(nullable NSError *)error;
+- (void)CardViewModel:(nonnull CardViewModel *)model didFinishLoadingCards:(nonnull NSArray <VerifyCardInfo *> *)cards error:(nullable NSError *)error;
 @end

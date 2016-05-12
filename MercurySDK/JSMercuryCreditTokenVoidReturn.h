@@ -20,5 +20,4 @@
 // The reference number of the transaction returned in the original PreAuthCapture or Sale response.
 @property (strong, nonatomic, nonnull) NSString *refNo;
 
-- (void)js_mercury_credit_token:(void (^ _Nullable)(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error))completion;
 @end

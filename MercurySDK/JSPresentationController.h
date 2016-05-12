@@ -1,8 +1,8 @@
 //
 //  JSPresentationController.h
-//  MercurySDK
+//  iMobileRep
 //
-//  Created by John Setting on 5/9/16.
+//  Created by John Setting on 3/10/16.
 //  Copyright © 2016 John Setting. All rights reserved.
 //
 

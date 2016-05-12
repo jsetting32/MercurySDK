@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ycl-kI-Wte">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cards-->
+        <scene sceneID="AaO-ex-Q6G">
+            <objects>
+                <viewController title="Cards" id="Ycl-kI-Wte" customClass="JSMercuryCardController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dnR-2E-qPR"/>
+                        <viewControllerLayoutGuide type="bottom" id="5LZ-MN-ZgV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zlQ-BP-R06">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="wcz-1i-Yaa">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CardCell" rowHeight="50" id="QOl-AA-uiL" customClass="CardCell">
+                                        <rect key="frame" x="0.0" y="50" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QOl-AA-uiL" id="Rj0-46-Jbg">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eqt-WM-gCp">
+                                                    <rect key="frame" x="61" y="18" width="77" height="14"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exp Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4vI-eH-E4o">
+                                                    <rect key="frame" x="524" y="18" width="42" height="14"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nib-JF-G2B">
+                                                    <rect key="frame" x="574" y="20" width="10" height="10"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="10" id="kIp-Zb-s2S"/>
+                                                        <constraint firstAttribute="width" secondItem="nib-JF-G2B" secondAttribute="height" multiplier="1:1" id="wMz-ee-gNm"/>
+                                                    </constraints>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit" translatesAutoresizingMaskIntoConstraints="NO" id="ZId-8p-26Y">
+                                                    <rect key="frame" x="16" y="14" width="37" height="22"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eqt-WM-gCp" firstAttribute="centerY" secondItem="Rj0-46-Jbg" secondAttribute="centerY" id="1eU-2a-rcV"/>
+                                                <constraint firstItem="ZId-8p-26Y" firstAttribute="leading" secondItem="Rj0-46-Jbg" secondAttribute="leadingMargin" constant="8" id="EeJ-ye-1ib"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nib-JF-G2B" secondAttribute="trailing" constant="8" id="Mht-EC-H6q"/>
+                                                <constraint firstItem="ZId-8p-26Y" firstAttribute="centerY" secondItem="Rj0-46-Jbg" secondAttribute="centerY" id="V4C-TX-x9Y"/>
+                                                <constraint firstItem="nib-JF-G2B" firstAttribute="leading" secondItem="4vI-eH-E4o" secondAttribute="trailing" constant="8" id="VbT-1w-ZdG"/>
+                                                <constraint firstItem="4vI-eH-E4o" firstAttribute="centerY" secondItem="Rj0-46-Jbg" secondAttribute="centerY" id="oCm-E1-Ktb"/>
+                                                <constraint firstItem="eqt-WM-gCp" firstAttribute="leading" secondItem="ZId-8p-26Y" secondAttribute="trailing" constant="8" id="okY-1u-hXg"/>
+                                                <constraint firstItem="nib-JF-G2B" firstAttribute="centerY" secondItem="Rj0-46-Jbg" secondAttribute="centerY" id="r2N-EG-vno"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageViewCardType" destination="ZId-8p-26Y" id="SiT-4Y-8YP"/>
+                                            <outlet property="labelExpDate" destination="4vI-eH-E4o" id="UfZ-Uq-byG"/>
+                                            <outlet property="labelMaskedAccount" destination="eqt-WM-gCp" id="MaK-z7-Cne"/>
+                                            <outlet property="viewValid" destination="nib-JF-G2B" id="vVq-x9-utP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ycl-kI-Wte" id="gYN-XN-Kod"/>
+                                    <outlet property="delegate" destination="Ycl-kI-Wte" id="2Ne-8u-Dnc"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wcz-1i-Yaa" firstAttribute="leading" secondItem="zlQ-BP-R06" secondAttribute="leadingMargin" constant="-20" id="1t8-IU-fWR"/>
+                            <constraint firstItem="5LZ-MN-ZgV" firstAttribute="top" secondItem="wcz-1i-Yaa" secondAttribute="bottom" id="aBl-Sc-Dh4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wcz-1i-Yaa" secondAttribute="trailing" constant="-20" id="d9a-uG-jeX"/>
+                            <constraint firstItem="wcz-1i-Yaa" firstAttribute="top" secondItem="dnR-2E-qPR" secondAttribute="bottom" id="ohf-3d-bjD"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Payment" image="credit" selectedImage="credit" id="8vL-bF-DKg"/>
+                    <connections>
+                        <outlet property="tableView" destination="wcz-1i-Yaa" id="suR-33-HU4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J3D-JX-YSd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-186" y="1114"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="credit" width="37" height="22"/>
+    </resources>
+</document>

@@ -2,7 +2,7 @@
 //  CreditResponse.m
 //  MercurySDK
 //
-//  Created by John Setting on 5/3/16.
+//  Created by John Setting on 5/12/16.
 //  Copyright © 2016 John Setting. All rights reserved.
 //
 
@@ -13,11 +13,11 @@
 @implementation CreditResponse
 
 // Insert code here to add functionality to your managed object subclass
-// Insert code here to add functionality to your managed object subclass
 + (BOOL)createCreditResponse:(JSMercuryCreditTokenResponse *)object error:(NSError *)error {
     NSManagedObjectContext *context = [[JSMercuryCoreDataController sharedInstance] masterManagedObjectContext];
     CreditResponse *info = [CreditResponse js_hardManagedObject:context];
     info.account = object.account;
+    info.action = object.action;
     info.acqRefData = object.acqRefData;
     info.authCode = object.authCode;
     info.authorizeAmount = object.authorizeAmount;
