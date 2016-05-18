@@ -10,6 +10,7 @@
 #import "Verify.h"
 #import "JSMercuryVerifyCardInfo.h"
 #import "JSMercuryCreditTokenResponse.h"
+#import "CreditResponse.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

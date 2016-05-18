@@ -29,6 +29,7 @@
     info.statusMessage = object.statusMessage;
     info.token = object.token;
     info.tranType = object.tranType;
+    info.dateUsed = [NSDate date];
     return [context save:&error];
 }
 

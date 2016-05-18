@@ -2,7 +2,7 @@
 //  JSCheckoutShippingCell.m
 //  MercurySDK
 //
-//  Created by John Setting on 5/10/16.
+//  Created by John Setting on 5/18/16.
 //  Copyright © 2016 John Setting. All rights reserved.
 //
 
@@ -12,16 +12,43 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    [self.viewCardBillingImage setHidden:YES];
+    self.layoutConstraintViewImageViewCardInformationHeight.constant = 0.0f;
+    self.layoutConstraintImageViewCardType.constant = 0.0f;
+    self.layoutConstraintImageViewCardTypeCardHolderName.constant = 0.0f;
+    [[self labelCardBilling] setText:@"SHIPPING"];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
 
-    // Configure the view for the selected state
+- (void)hasBillingInformation:(BOOL)information {
+    if (!information) {
+        [[self labelBillingInformation] setText:@"Add Shipping Information"];
+    }
+    
+    self.layoutConstraintViewImageViewCardInformationHeight.constant = (information) ? 15.0f : 0.0f;
+    [self.viewImageViewCardInformation setHidden:!information];
 }
 
-+ (NSString *)reuseIdentifier { return NSStringFromClass([self class]); }
-+ (CGFloat)heightForCell { return 68.0f; }
+- (void)setCardInformation:(VerifyCardInfo *)card address:(Address *)address {
+    
+    [self hasBillingInformation:(address) ? YES : NO];
+    if (address) {
+        [[self labelBillingInformation] setText:address.tomsFormattedMultiLineAddress];
+        [[self labelCardInformation] setText:address.name];
+        return;
+    }
+}
+
++ (nonnull NSString *)reuseIdentifier {
+    return NSStringFromClass([self class]);
+}
 
 @end

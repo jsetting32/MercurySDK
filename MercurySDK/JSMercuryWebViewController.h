@@ -18,6 +18,7 @@
 @end
 
 @protocol JSMercuryWebViewDelegate <NSObject>
+@optional
 - (void)JSMercuryWebViewController:(nonnull JSMercuryWebViewController *)controller didFinishWithPaymentResponse:(JSMercuryVerifyPayment * _Nullable)response error:( NSError * _Nullable)error;
 - (void)JSMercuryWebViewController:(nonnull JSMercuryWebViewController *)controller didFinishWithCardInfoResponse:(JSMercuryVerifyCardInfo * _Nullable)response error:( NSError * _Nullable)error;
 @end

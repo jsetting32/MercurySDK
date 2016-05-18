@@ -44,6 +44,9 @@
     
     self.refNo = [response objectForKey:@"RefNo"];
     self.status = [response objectForKey:@"Status"];
+
+    self.taxAmount = [response objectForKey:@"TaxAmount"];
+    
     self.token = [response objectForKey:@"Token"];
 
     self.action = action;

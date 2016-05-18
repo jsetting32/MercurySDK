@@ -69,6 +69,9 @@
 // transactions such as CreditPreAuthCaptureToken.
 @property (strong, nonatomic, nonnull) NSString *token;
 
+// The date at which the token will expire (6 months for one time, 3 years for recurring)
+@property (strong, nonatomic, nonnull) NSDate *tokenExpireDate;
+
 // Payment: PreAuth or Sale
 // CardInfo: CardLookup
 @property (strong, nonatomic, nonnull) NSString *tranType;

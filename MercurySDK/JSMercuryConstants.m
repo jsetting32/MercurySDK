@@ -8,11 +8,11 @@
 
 #import "JSMercuryConstants.h"
 
-NSString * const MERCURY_WEB_SERVICE_ERROR_DOMAIN = @"com.mercury.vantiv";
-NSString * const MERCURY_WEB_SERVICE_URL_DEVELOPMENT = @"https://hc.mercurycert.net";
-NSString * const MERCURY_WEB_SERVICE_URL_PRODUCTION = @"https://hc.mercurypay.com";
-NSString * const MERCURY_WEB_SERVICE_ENDPOINT = @"/hcws/hcservice.asmx";
-NSString * const MERCURY_WEB_SERVICE_TOKENIZATION_ENDPOINT = @"/tws/transactionservice.asmx";
+NSString * const MERCURY_WEB_SERVICE_ERROR_DOMAIN               = @"com.mercury.vantiv";
+NSString * const MERCURY_WEB_SERVICE_URL_DEVELOPMENT            = @"https://hc.mercurycert.net";
+NSString * const MERCURY_WEB_SERVICE_URL_PRODUCTION             = @"https://hc.mercurypay.com";
+NSString * const MERCURY_WEB_SERVICE_ENDPOINT                   = @"/hcws/hcservice.asmx";
+NSString * const MERCURY_WEB_SERVICE_TOKENIZATION_ENDPOINT      = @"/tws/transactionservice.asmx";
 
 NSString * const MERCURY_ACTION_INITIALIZE_PAYMENT              = @"InitializePayment";
 NSString * const MERCURY_ACTION_INITIALIZE_CARD_INFO            = @"InitializeCardInfo";

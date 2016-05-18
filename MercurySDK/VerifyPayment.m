@@ -9,6 +9,7 @@
 #import "VerifyPayment.h"
 #import "JSMercuryCoreDataController.h"
 #import "NSManagedObject+Properties.h"
+#import "VerifyCardInfo.h"
 
 @implementation VerifyPayment
 
@@ -41,6 +42,7 @@
     info.token = object.token;
     info.transPostTime = object.transPostTime;
     info.tranType = object.tranType;
+    
     return [context save:&error];
 }
 

@@ -12,7 +12,7 @@
 @protocol CardViewModelDelegate;
 @interface CardViewModel : NSObject <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic, nullable) id <CardViewModelDelegate> delegate;
-@property (strong, nonatomic, nonnull, readonly) NSArray <VerifyCardInfo *> *cards;
+@property (strong, nonatomic, nonnull) NSMutableArray <VerifyCardInfo *> *cards;
 - (void)loadCards;
 @end
 

@@ -18,31 +18,19 @@
     if (!(self = [super initWithToken:token])) return nil;
     _acqRefData = @"";
     _authCode = @"";
-    _purchaseAmount = @0;
     _refNo = @"";
     _processData = @"";
+    _purchaseAmount = @0;
     return self;
 }
 
-- (instancetype)initWithVerifyPayment:(JSMercuryVerifyPayment *)payment {
-    if (!(self = [super init])) return nil;
-    _acqRefData = payment.acqRefData;
-    _authCode = payment.authCode;
-    _purchaseAmount = payment.amount;
-    _refNo = payment.refNo;
-    _processData = payment.processData;
-    self.cardHolderName = payment.cardHolderName;
-
-    JSMercuryUtility *utility = [JSMercuryUtility sharedInstance];
-    
-    self.frequency = utility.initializer.frequency;
-    
-//    self.frequency = payment.;
-    self.invoice = payment.invoice;
-    self.memo = payment.memo;
-//    self.operatorId = payment.o;
-//    self.terminalName = ;
-    self.token = payment.token;
+- (instancetype)initWithResponse:(CreditResponse *)response {
+    if (!(self = [super initWithResponse:response])) return nil;
+    _acqRefData = response.acqRefData;
+    _authCode = response.authCode;
+    _refNo = response.refNo;
+    _processData = response.processData;
+    _purchaseAmount = response.purchaseAmount;
     return self;
 }
 
@@ -52,7 +40,7 @@
         NSError *error = nil;
         BOOL coreData = [[[JSMercuryAPIClient sharedClient] coreDataKey] boolValue];
         if (coreData) {
-            if (![CreditResponse createCreditResponse:response error:error]) {
+            if (![CreditResponse createCreditResponse:response token:self.token error:&error]) {
                 NSLog(@"%@", error);
             }
         }
@@ -83,8 +71,6 @@
     NSMutableDictionary *parameters = [super generateParameters:emptyParameters error:error];
 
     if ([[[JSMercuryAPIClient sharedClient] production] boolValue]) {
-        
-    } else {
         NSString *frequency = [JSMercuryUtility js_mercury_frequency_type:self.frequency];
         if (![JSMercuryUtility checkField:frequency]) [emptyParameters addObject:@"Frequency"];
         if (![JSMercuryUtility checkField:self.acqRefData]) [emptyParameters addObject:@"AcqRefData"];
@@ -96,12 +82,14 @@
             *error = [JSMercuryCreditToken errorWithParameters:emptyParameters];
             return nil;
         }
-//        NSAssert([JSMercuryUtility checkField:frequency], @"Frequency is a required field for Token Reversal");
-//        NSAssert([JSMercuryUtility checkField:self.acqRefData], @"AcqRefData is a required field for Token Pre Auth");
-//        NSAssert([JSMercuryUtility checkField:self.authCode], @"AuthCode is a required field for Token Pre Auth");
-//        NSAssert([JSMercuryUtility checkField:self.purchaseAmount], @"PurchaseAmount is a required field for Token Pre Auth");
-//        NSAssert([JSMercuryUtility checkField:self.refNo], @"RefNo is a required field for Token Pre Auth");
-//        NSAssert([JSMercuryUtility checkField:self.processData], @"ProcessData is a required field for Token Pre Auth");
+    } else {
+        NSString *frequency = [JSMercuryUtility js_mercury_frequency_type:self.frequency];
+        NSAssert([JSMercuryUtility checkField:frequency], @"Frequency is a required field for Token Reversal");
+        NSAssert([JSMercuryUtility checkField:self.acqRefData], @"AcqRefData is a required field for Token Pre Auth");
+        NSAssert([JSMercuryUtility checkField:self.authCode], @"AuthCode is a required field for Token Pre Auth");
+        NSAssert([JSMercuryUtility checkField:self.purchaseAmount], @"PurchaseAmount is a required field for Token Pre Auth");
+        NSAssert([JSMercuryUtility checkField:self.refNo], @"RefNo is a required field for Token Pre Auth");
+        NSAssert([JSMercuryUtility checkField:self.processData], @"ProcessData is a required field for Token Pre Auth");
     }
     
     [parameters setObject:self.acqRefData forKey:@"AcqRefData"];

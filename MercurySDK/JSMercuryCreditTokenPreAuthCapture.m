@@ -27,13 +27,27 @@
     return self;
 }
 
+- (instancetype)initWithResponse:(CreditResponse *)response {
+    if (!(self = [super initWithResponse:response])) return nil;
+    _acqRefData = response.acqRefData;
+    _authCode = response.authCode;
+    _authAmount = response.authorizeAmount;
+    _customerCode = nil;
+    _gratuityAmount = response.gratuityAmount;
+    _purchaseAmount = response.purchaseAmount;
+    _taxAmount = @0;
+    return self;
+}
+
 - (void)hcTransactionDidFinish:(NSDictionary *)result {
     if (self.completionBlock) {
         JSMercuryCreditTokenResponse *response = [[JSMercuryCreditTokenResponse alloc] initWithResponse:result action:MERCURY_ACTION_CREDIT_TOKEN_PRE_AUTH_CAPTURE];
+        response.taxAmount = self.taxAmount;
+
         NSError *error = nil;
         BOOL coreData = [[[JSMercuryAPIClient sharedClient] coreDataKey] boolValue];
         if (coreData) {
-            if (![CreditResponse createCreditResponse:response error:error]) {
+            if (![CreditResponse createCreditResponse:response token:self.token error:&error]) {
                 NSLog(@"%@", error);
             }
         }
@@ -65,8 +79,6 @@
     NSMutableDictionary *parameters = [super generateParameters:emptyParameters error:error];
 
     if ([[[JSMercuryAPIClient sharedClient] production] boolValue]) {
-        
-    } else {
         if (![JSMercuryUtility checkField:self.authCode]) [emptyParameters addObject:@"AuthCode"];
         if (![JSMercuryUtility checkField:self.authAmount]) [emptyParameters addObject:@"AuthAmount"];
         if (![JSMercuryUtility checkField:self.gratuityAmount]) [emptyParameters addObject:@"GratuityAmount"];
@@ -75,12 +87,13 @@
         if ([emptyParameters count] > 0) {
             *error = [JSMercuryCreditToken errorWithParameters:emptyParameters];
             return nil;
-        }
-//        NSAssert([JSMercuryUtility checkField:self.authCode], @"AuthCode is a required field for Token Pre Auth");
-//        NSAssert([JSMercuryUtility checkField:self.authAmount], @"AuthAmount is a required field for Token Pre Auth");
-//        NSAssert([JSMercuryUtility checkField:self.gratuityAmount], @"GratuityAmount is a required field for Token Pre Auth");
-//        NSAssert([JSMercuryUtility checkField:self.purchaseAmount], @"PurchaseAmount is a required field for Token Pre Auth");
-//        NSAssert([JSMercuryUtility checkField:self.taxAmount], @"TaxAmount is a required field for Token Pre Auth");
+        }        
+    } else {
+        NSAssert([JSMercuryUtility checkField:self.authCode], @"AuthCode is a required field for Token Pre Auth");
+        NSAssert([JSMercuryUtility checkField:self.authAmount], @"AuthAmount is a required field for Token Pre Auth");
+        NSAssert([JSMercuryUtility checkField:self.gratuityAmount], @"GratuityAmount is a required field for Token Pre Auth");
+        NSAssert([JSMercuryUtility checkField:self.purchaseAmount], @"PurchaseAmount is a required field for Token Pre Auth");
+        NSAssert([JSMercuryUtility checkField:self.taxAmount], @"TaxAmount is a required field for Token Pre Auth");
     }
     
     if ([JSMercuryUtility checkField:self.acqRefData]) [parameters setObject:self.acqRefData forKey:@"AcqRefData"];

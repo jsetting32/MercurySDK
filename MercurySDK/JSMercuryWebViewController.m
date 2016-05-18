@@ -39,8 +39,7 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    JSMercuryUtility *utility = [JSMercuryUtility sharedInstance];
-    JSMercuryInitialize *init = utility.initializer;
+    JSMercuryInitialize *init = [[JSMercuryUtility sharedInstance] initializer];
     NSNumber * type = @0;
     if ([init isKindOfClass:[JSMercuryInitializePayment class]]) type = @1;
     if ([init isKindOfClass:[JSMercuryInitializeCardInfo class]]) type = @2;

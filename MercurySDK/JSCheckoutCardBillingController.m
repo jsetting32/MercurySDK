@@ -40,20 +40,20 @@
     self.card = card;
     [controller.navigationController popViewControllerAnimated:YES];
     [self.tableView reloadData];
-    UINavigationController *parent = (UINavigationController *)self.parentViewController;
-    JSCheckoutController *checkout = [parent.viewControllers firstObject];
-    checkout.card = self.card;
-    [checkout.tableView reloadData];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(JSCheckoutCardBillingController:didSelectBillingAddress:card:)]) {
+        [self.delegate JSCheckoutCardBillingController:self didSelectBillingAddress:nil card:card];
+    }
 }
 
 - (void)JSCheckoutAddressController:(JSCheckoutAddressController *)controller didSelectAddress:(Address *)address {
     self.address = address;
     [controller.navigationController popViewControllerAnimated:YES];
     [self.tableView reloadData];
-    UINavigationController *parent = (UINavigationController *)self.parentViewController;
-    JSCheckoutController *checkout = [parent.viewControllers firstObject];
-    checkout.billing = self.address;
-    [checkout.tableView reloadData];
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(JSCheckoutCardBillingController:didSelectBillingAddress:card:)]) {
+        [self.delegate JSCheckoutCardBillingController:self didSelectBillingAddress:address card:nil];
+    }
 }
 
 #pragma mark - Table view data source

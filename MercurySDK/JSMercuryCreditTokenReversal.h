@@ -13,8 +13,6 @@
 
 @interface JSMercuryCreditTokenReversal : JSMercuryCreditToken
 
-- (nullable instancetype)initWithVerifyPayment:(nonnull JSMercuryVerifyPayment *)payment;
-
 // Acquirer Reference Data that was received in the response of VerifyPayment, CreditSaleToken,
 // CreditPreAuthToken, or CreditPreAuthCaptureToken transaction.
 @property (strong, nonatomic, nonnull) NSString *acqRefData;

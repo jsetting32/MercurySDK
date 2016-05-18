@@ -25,13 +25,27 @@
     return self;
 }
 
+- (instancetype)initWithResponse:(CreditResponse *)response {
+    if (!(self = [super initWithResponse:response])) return nil;
+    _address = nil;
+    _customerCode = nil;
+    _cvv = nil;
+    _partialAuth = NO;
+    _purchaseAmount = response.purchaseAmount;
+    _taxAmount = @0;
+    _zip = nil;
+    return self;
+}
+
 - (void)hcTransactionDidFinish:(NSDictionary *)result {
     if (self.completionBlock) {
         JSMercuryCreditTokenResponse *response = [[JSMercuryCreditTokenResponse alloc] initWithResponse:result action:MERCURY_ACTION_CREDIT_TOKEN_SALE];
+        response.taxAmount = self.taxAmount;
+        
         NSError *error = nil;
         BOOL coreData = [[[JSMercuryAPIClient sharedClient] coreDataKey] boolValue];
         if (coreData) {
-            if (![CreditResponse createCreditResponse:response error:error]) {
+            if (![CreditResponse createCreditResponse:response token:self.token error:&error]) {
                 NSLog(@"%@", error);
             }
         }
@@ -63,16 +77,15 @@
     NSMutableDictionary *parameters = [super generateParameters:emptyParameters error:error];
 
     if ([[[JSMercuryAPIClient sharedClient] production] boolValue]) {
-        
-    } else {
         if (![JSMercuryUtility checkField:self.purchaseAmount]) [emptyParameters addObject:@"PurchaseAmount"];
         if (![JSMercuryUtility checkField:self.taxAmount]) [emptyParameters addObject:@"TaxAmount"];
         if ([emptyParameters count] > 0) {
             *error = [JSMercuryCreditToken errorWithParameters:emptyParameters];
             return nil;
-        }
-//        NSAssert([JSMercuryUtility checkField:self.purchaseAmount], @"PurchaseAmount is a required field for Token Sale");
-//        NSAssert([JSMercuryUtility checkField:self.taxAmount], @"TaxAmount is a required field for Token Sale");
+        }        
+    } else {
+        NSAssert([JSMercuryUtility checkField:self.purchaseAmount], @"PurchaseAmount is a required field for Token Sale");
+        NSAssert([JSMercuryUtility checkField:self.taxAmount], @"TaxAmount is a required field for Token Sale");
     }
 
     

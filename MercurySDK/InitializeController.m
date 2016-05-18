@@ -36,13 +36,22 @@
     [controller dismissViewControllerAnimated:YES completion:nil];    
 }
 
-- (IBAction)verifyPayment:(id)sender {
+- (IBAction)verifyCardInfo:(UIButton *)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"JSCheckoutController" bundle:nil];
     JSCheckoutController *checkout = [storyboard instantiateInitialViewController];
     checkout.taxAmount = @(9.99);
     checkout.shippingAmount = @(20);
     checkout.subtotalAmount = @(100);
-    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:checkout] animated:YES completion:nil];
+    [self.navigationController pushViewController:checkout animated:YES];
+}
+
+- (IBAction)verifyPayment:(UIButton *)sender {
+    JSMercuryInitializePayment *checkout = [[JSMercuryInitializePayment alloc] init];
+    checkout.totalAmount = @(3.99);
+    checkout.invoice = @"1234";
+    [checkout js_mercury_transaction:^(UINavigationController *navigationController, id webController, NSError *error) {
+        [self presentViewController:navigationController animated:YES completion:nil];
+    }];
 }
 
 /*

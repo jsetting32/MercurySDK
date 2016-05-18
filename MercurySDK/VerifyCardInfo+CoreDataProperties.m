@@ -2,7 +2,7 @@
 //  VerifyCardInfo+CoreDataProperties.m
 //  MercurySDK
 //
-//  Created by John Setting on 4/29/16.
+//  Created by John Setting on 5/18/16.
 //  Copyright © 2016 John Setting. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,8 +13,9 @@
 
 @implementation VerifyCardInfo (CoreDataProperties)
 
+@dynamic cardIdExpired;
 @dynamic cardUsage;
 @dynamic operatorId;
-@dynamic cardIdExpired;
+@dynamic dateUsed;
 
 @end

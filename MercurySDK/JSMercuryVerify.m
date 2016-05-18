@@ -30,6 +30,11 @@
     _statusMessage = [response objectForKey:@"StatusMessage"];
     _token = [response objectForKey:@"Token"];
     _tranType = [response objectForKey:@"TranType"];
+    
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setMonth:6];
+    _tokenExpireDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:[NSDate date] options:0];
+
     return self;
 }
 

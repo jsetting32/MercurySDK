@@ -23,13 +23,22 @@
     return self;
 }
 
+- (instancetype)initWithResponse:(CreditResponse *)response {
+    if (!(self = [super initWithResponse:response])) return nil;
+    _address = nil;
+    _amount = response.purchaseAmount;
+    _cvv = nil;
+    _zip = nil;
+    return self;
+}
+
 - (void)hcTransactionDidFinish:(NSDictionary *)result {
     if (self.completionBlock) {
         JSMercuryCreditTokenResponse *response = [[JSMercuryCreditTokenResponse alloc] initWithResponse:result action:MERCURY_ACTION_CREDIT_TOKEN_PRE_AUTH];
         NSError *error = nil;
         BOOL coreData = [[[JSMercuryAPIClient sharedClient] coreDataKey] boolValue];
         if (coreData) {
-            if (![CreditResponse createCreditResponse:response error:error]) {
+            if (![CreditResponse createCreditResponse:response token:self.token error:&error]) {
                 NSLog(@"%@", error);
             }
         }
@@ -61,14 +70,13 @@
     NSMutableDictionary *parameters = [super generateParameters:emptyParameters error:error];
 
     if ([[[JSMercuryAPIClient sharedClient] production] boolValue]) {
-        
-    } else {
         if (![JSMercuryUtility checkField:self.amount]) [emptyParameters addObject:@"Amount"];
         if ([emptyParameters count] > 0) {
             *error = [JSMercuryCreditToken errorWithParameters:emptyParameters];
             return nil;
-        }
-//        NSAssert([JSMercuryUtility checkField:self.amount], @"Amount is a required field for Token Pre Auth");
+        }        
+    } else {
+        NSAssert([JSMercuryUtility checkField:self.amount], @"Amount is a required field for Token Pre Auth");
     }
     
     if ([JSMercuryUtility checkField:self.address]) [parameters setObject:self.address forKey:@"Address"];

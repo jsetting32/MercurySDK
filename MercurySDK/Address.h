@@ -14,9 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Address : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
+- (NSString *)tomsFormattedMultiLineAddress;
 - (NSString *)formattedMultiLineAddress;
 - (NSString *)formattedSingleLineAddress;
 - (NSString *)formattedVantivAddress;
++ (Address *)saveAddress:(NSDictionary *)data error:(NSError **)error;
 
 @end
 

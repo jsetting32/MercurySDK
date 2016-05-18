@@ -15,6 +15,10 @@
 #import "NSManagedObject+Properties.h"
 #import "JSMercuryCoreDataController.h"
 
+//@interface JSMercuryVerifyPayment()
+//@property (strong, nonatomic, nullable) NSString *paymentId;
+//@end
+
 @implementation JSMercuryVerifyPayment
 
 - (instancetype)initWithResponse:(NSDictionary *)response {
@@ -63,6 +67,7 @@
 - (void)hcTransactionDidFinish:(NSDictionary *)result {
     if (self.completionBlock) {
         JSMercuryVerifyPayment *verify = [[JSMercuryVerifyPayment alloc] initWithResponse:result];
+        
         NSError *error = nil;
         BOOL coreData = [[[JSMercuryAPIClient sharedClient] coreDataKey] boolValue];
         if (coreData) {

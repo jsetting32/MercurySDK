@@ -37,6 +37,6 @@
 + (nonnull NSString *)appVersion;
 + (nonnull NSString *)build;
 + (nonnull NSString *)versionBuild;
-+ (void)showAlert:(nonnull id)target creditResponse:(nonnull CreditResponse *)response;
++ (void)showAlert:(nonnull id)target creditResponse:(nonnull CreditResponse *)response token:(nonnull)token completion:(void (^ _Nullable)())completion;
 + (nonnull NSString *)formattedCardBillingInformation:(nonnull VerifyCardInfo *)card address:(nonnull Address *)address;
 @end

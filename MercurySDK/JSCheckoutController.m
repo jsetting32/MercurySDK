@@ -9,7 +9,7 @@
 #import "JSCheckoutController.h"
 #import "JSAnimationTransitionController.h"
 #import "JSCheckoutPresentationController.h"
-#import "JSCheckoutCompanyCell.h"
+#import "JSCheckoutHeaderCell.h"
 #import "JSCheckoutCardBillingCell.h"
 #import "JSCheckoutShippingCell.h"
 #import "JSCheckoutOrderCell.h"
@@ -18,9 +18,14 @@
 #import "JSMercuryUtility.h"
 #import "JSMercuryCreditTokenSale.h"
 #import "JSMercuryCoreDataController.h"
+#import "JSCheckoutCardBillingController.h"
+#import "JSCheckoutItemCell.h"
 
-@interface JSCheckoutController () <UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UITableViewDelegate, UITableViewDataSource, JSCheckoutCompanyCellDelegate, JSCheckoutSubmitCellDelegate, JSCheckoutAddressControllerDelegate>
-
+@interface JSCheckoutController () <UIViewControllerTransitioningDelegate, UIAdaptivePresentationControllerDelegate, UITableViewDelegate, UITableViewDataSource,JSCheckoutAddressControllerDelegate, JSCheckoutCardBillingControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@property (strong, nonatomic) NSString *next;
+@property (strong, nonatomic, nullable) VerifyCardInfo *card;
+@property (strong, nonatomic, nullable) Address *shipping;
+@property (strong, nonatomic, nullable) Address *billing;
 @end
 
 @implementation JSCheckoutController
@@ -53,6 +58,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSError *error = nil;
+    
+    UICollectionViewFlowLayout * layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    layout.sectionHeadersPinToVisibleBounds = true;
+    layout.minimumInteritemSpacing = 1;
+    layout.minimumLineSpacing = 1;
+
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.card = [JSMercuryCoreDataController fetchVerifyCardInfoLastUsed:error];
+    self.billing = [JSMercuryCoreDataController fetchBillingAddressLastUsed:error];
+    self.shipping = [JSMercuryCoreDataController fetchShippingAddressLastUsed:error];
+    self.next = [[JSMercuryCoreDataController fetchNextInvoiceNumber:nil] stringValue];
+    if (error) {
+        NSLog(@"%@", error);
+    }
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.layoutConstraintTableViewHeight.constant = 166.0f;
+    [self.view layoutIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,13 +88,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) return [JSCheckoutCompanyCell heightForCell];
-    if (indexPath.row == 1) return [JSCheckoutCardBillingCell heightForCell];
-    if (indexPath.row == 2) return [JSCheckoutShippingCell heightForCell];
+    if (indexPath.row == 0) return [JSCheckoutHeaderCell heightForCell];
+    if (indexPath.row == 1) return [JSCheckoutShippingCell heightForCell];
+    if (indexPath.row == 2) return [JSCheckoutCardBillingCell heightForCell];
     if (indexPath.row == 3) return [JSCheckoutOrderCell heightForCell];
     if (indexPath.row == 4) return [JSCheckoutSubmitCell heightForCell];
     return 0.0f;
@@ -76,39 +103,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (indexPath.row == 0) {
-        JSCheckoutCompanyCell *cell = [tableView dequeueReusableCellWithIdentifier:[JSCheckoutCompanyCell reuseIdentifier]];
-        [cell setDelegate:self];
+        JSCheckoutHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:[JSCheckoutHeaderCell reuseIdentifier]];
+        [[cell labelItems] setText:@"99 Items"];
+        [[cell labelUnits] setText:@"999 Units"];
+        [[cell labelOrderNumber] setText:[NSString stringWithFormat:@"Order # : %@", self.next]];
+        NSNumber *total = @([self.taxAmount floatValue] + [self.shippingAmount floatValue] + [self.subtotalAmount floatValue]);
+        [[cell labelTotal] setText:[[JSCheckoutOrderCell currencyFormatter] stringFromNumber:total]];
         return cell;
     }
 
     if (indexPath.row == 1) {
-        JSCheckoutCardBillingCell *cell = [tableView dequeueReusableCellWithIdentifier:[JSCheckoutCardBillingCell reuseIdentifier]];
-        if (self.billing && self.card) {
-            [[cell labelCardBillingInformation] setText:[JSMercuryUtility formattedCardBillingInformation:self.card address:self.billing]];
-            return cell;
-        }
-        
-        if (self.card) {
-            [[cell labelCardBillingInformation] setText:[NSString stringWithFormat:@"%@ %@", self.card.maskedAccount, self.card.formattedExpDate]];
-            return cell;
-        }
-        
-        if (self.billing) {
-            [[cell labelCardBillingInformation] setText:self.billing.formattedSingleLineAddress];
-            return cell;
-        }
-        
-        [[cell labelCardBillingInformation] setText:@"Add Card and Billing Information"];
+        JSCheckoutShippingCell *cell = [tableView dequeueReusableCellWithIdentifier:[JSCheckoutShippingCell reuseIdentifier]];
+        [cell setCardInformation:self.card address:self.shipping];
         return cell;
     }
 
     if (indexPath.row == 2) {
-        JSCheckoutShippingCell *cell = [tableView dequeueReusableCellWithIdentifier:[JSCheckoutShippingCell reuseIdentifier]];
-        if (self.shipping) {
-            [[cell labelShippingInformation] setText:[self.shipping formattedMultiLineAddress]];
-            return cell;
-        }
-        [[cell labelShippingInformation] setText:@"Add Shipping Information"];
+        JSCheckoutCardBillingCell *cell = [tableView dequeueReusableCellWithIdentifier:[JSCheckoutCardBillingCell reuseIdentifier]];
+        [cell setCardInformation:self.card address:self.billing];
         return cell;
     }
 
@@ -131,20 +143,18 @@
     return nil;
 }
 
-#pragma mark <JSCheckoutCompanyCellDelegate>
-- (void)JSCheckoutCompanyCell:(JSCheckoutCompanyCell *)cell didTapCancelButton:(UIButton *)button {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark <JSCheckoutSubmitCellDelegate>
-- (void)JSCheckoutSubmitCell:(JSCheckoutSubmitCell *)cell didTapSubmitButton:(UIButton *)button {
+- (IBAction)didTapSubmitButtonAction:(UIButton *)sender {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Submit Order" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *sale = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSError *error = nil;
+        [JSMercuryCoreDataController updateUsedCard:self.card billing:self.billing shipping:self.shipping error:&error];
+        if (error) NSLog(@"%@", error);
+        
         JSMercuryCreditTokenSale *sale = [[JSMercuryCreditTokenSale alloc] initWithToken:self.card.token];
         sale.address = self.billing.formattedVantivAddress;
         sale.zip = self.billing.postalCode;
         sale.purchaseAmount = @([self.taxAmount floatValue] + [self.shippingAmount floatValue] + [self.subtotalAmount floatValue]);
-        sale.invoice = [[JSMercuryCoreDataController fetchNextInvoiceNumber:nil] stringValue];
+        sale.invoice = self.next;
         [sale js_mercury_credit_token:^(JSMercuryCreditTokenResponse * _Nullable response, NSError * _Nullable error) {
             NSString *message = (error) ? [error localizedFailureReason] : @"Order Submitted";
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Status" message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -159,6 +169,19 @@
     [alert addAction:sale];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 10;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    JSCheckoutItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[JSCheckoutItemCell cellIdentifier] forIndexPath:indexPath];
+    return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(collectionView.frame.size.width, [JSCheckoutItemCell heightForCell]);
 }
 
 #pragma mark <UIViewControllerTransitioningDelegate>
@@ -184,12 +207,23 @@
     [controller.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)JSCheckoutCardBillingController:(JSCheckoutCardBillingController *)controller didSelectBillingAddress:(Address *)address card:(VerifyCardInfo *)card {
+    if (address) self.billing = address;
+    if (card) self.card = card;
+    [self.tableView reloadData];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"billing"]) {
+        JSCheckoutCardBillingController *billing = [segue destinationViewController];
+        [billing setDelegate:self];
+    }
     
     if ([[segue identifier] isEqualToString:@"shipping"]) {
         JSCheckoutAddressController * shipping = [segue destinationViewController];

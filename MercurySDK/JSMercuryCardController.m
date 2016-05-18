@@ -59,15 +59,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        VerifyCardInfo *card = [[self.model cards] objectAtIndex:indexPath.row];
         if (self.selection) {
+            VerifyCardInfo *card = [[self.model cards] objectAtIndex:indexPath.row];
             if (self.delegate && [self.delegate respondsToSelector:@selector(JSMercuryCardController:didSelectCard:)]) {
                 [self.delegate JSMercuryCardController:self didSelectCard:card];
                 return;
             }
         }
-        [self deleteCard:card];
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         return;
     }
     
@@ -82,34 +80,36 @@
     }];
 }
 
-- (void)deleteCard:(VerifyCardInfo *)card {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Payment" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete Card" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        NSError *error = nil;
-        if (![card deleteObject:&error]) {
-            UIAlertController *delete = [UIAlertController alertControllerWithTitle:@"Delete Card Error" message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
-            UIAlertAction *retry = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self deleteCard:card];
-            }];
-            [delete addAction:okay];
-            [delete addAction:retry];
-            [self presentViewController:delete animated:YES completion:nil];
-            return;
-        }
-        
-        UIAlertController *delete = [UIAlertController alertControllerWithTitle:@"Delete Card" message:@"Successfully Deleted Card" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self.model loadCards];
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        VerifyCardInfo *card = [[self.model cards] objectAtIndex:indexPath.row];
+        [self deleteCard:card indexPath:indexPath];
+    }
+}
+
+- (void)deleteCard:(VerifyCardInfo *)card indexPath:(NSIndexPath *)indexPath {
+    NSError *error = nil;
+    if (![card deleteObject:&error]) {
+        UIAlertController *delete = [UIAlertController alertControllerWithTitle:@"Delete Card Error" message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *retry = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self deleteCard:card indexPath:indexPath];
         }];
         [delete addAction:okay];
+        [delete addAction:retry];
         [self presentViewController:delete animated:YES completion:nil];
-    }];
+        return;
+    }
     
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:delete];
-    [alert addAction:cancel];
-    [self presentViewController:alert animated:YES completion:nil];
+    [[self.model cards] removeObjectAtIndex:indexPath.row];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+    
+    UIAlertController *delete = [UIAlertController alertControllerWithTitle:@"Delete Card" message:@"Successfully Deleted Card" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.model loadCards];
+    }];
+    [delete addAction:okay];
+    [self presentViewController:delete animated:YES completion:nil];
 }
 
 - (void)CardViewModel:(CardViewModel *)model didFinishLoadingCards:(NSArray<VerifyCardInfo *> *)cards error:(NSError *)error {

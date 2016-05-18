@@ -12,20 +12,19 @@
 #import "JSMercuryUtility.h"
 
 @interface CardViewModel()
-@property (strong, nonatomic, nonnull, readwrite) NSArray <VerifyCardInfo *> *cards;
+//@property (strong, nonatomic, nonnull) NSMutableArray <VerifyCardInfo *> *cards;
 @end
 
 @implementation CardViewModel
 
 - (instancetype)init {
     if (!(self = [super init])) return nil;
-    _cards = [NSArray array];
     return self;
 }
 
 - (void)loadCards {
     NSError *error = nil;
-    self.cards = [JSMercuryCoreDataController fetchVerifyCardInfoAll:error];
+    self.cards = [[JSMercuryCoreDataController fetchVerifyCardInfoAll:error] mutableCopy];
     if (self.delegate && [self.delegate respondsToSelector:@selector(CardViewModel:didFinishLoadingCards:error:)]) {
         [self.delegate CardViewModel:self didFinishLoadingCards:self.cards error:error];
     }

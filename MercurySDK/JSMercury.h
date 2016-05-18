@@ -49,7 +49,7 @@
  *  A shared singleton API client. Its API key will be initially equal to [JSMercury merchantKey].
  */
 + (nonnull instancetype)sharedClient;
-- (nonnull instancetype)initWithMerchantKey:(nonnull NSString *)merchantKey passwordKey:(nonnull NSString *)passwordKey coreData:(BOOL)coreData production:(BOOL)production NS_DESIGNATED_INITIALIZER;
+//- (nonnull instancetype)initWithMerchantKey:(nonnull NSString *)merchantKey passwordKey:(nonnull NSString *)passwordKey coreData:(BOOL)coreData production:(BOOL)production NS_DESIGNATED_INITIALIZER;
 
 /**
  *  @see [JSMercury setMerchantKey:]

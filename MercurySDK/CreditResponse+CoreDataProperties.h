@@ -2,7 +2,7 @@
 //  CreditResponse+CoreDataProperties.h
 //  MercurySDK
 //
-//  Created by John Setting on 5/12/16.
+//  Created by John Setting on 5/18/16.
 //  Copyright © 2016 John Setting. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSString *account;
 @property (nullable, nonatomic, retain) NSString *acqRefData;
+@property (nullable, nonatomic, retain) NSString *action;
 @property (nullable, nonatomic, retain) NSString *authCode;
 @property (nullable, nonatomic, retain) NSNumber *authorizeAmount;
 @property (nullable, nonatomic, retain) NSString *avsResult;
@@ -31,7 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *refNo;
 @property (nullable, nonatomic, retain) NSString *status;
 @property (nullable, nonatomic, retain) NSString *token;
-@property (nullable, nonatomic, retain) NSString *action;
+@property (nullable, nonatomic, retain) NSDate *transPostTime;
+@property (nullable, nonatomic, retain) NSNumber *taxAmount;
 
 @end
 

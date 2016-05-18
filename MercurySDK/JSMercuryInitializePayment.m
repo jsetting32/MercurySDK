@@ -22,7 +22,7 @@
     _transType = kJSMercuryTransactionTypeSale;
     _partialAuth = NO;
     _totalAmount = @0;
-    _invoice = @"";
+    _invoice = nil;
     _memo = [NSString stringWithFormat:@"%@ - %@ - %@", [JSMercuryUtility appTitle], [JSMercuryUtility appVersion], MERCURY_ACTION_INITIALIZE_PAYMENT];
     _taxAmount = @0;
     _AVSFields = kJSMercuryTransactionAVSFieldsOff;
@@ -71,8 +71,8 @@
 }
 
 - (NSMutableDictionary *)generateParameters {
-    NSAssert(self.totalAmount, @"Total Amount must be used for payment initializer");
-    NSAssert(self.invoice, @"Invoice must be used for payment initializer");
+    NSAssert(self.totalAmount && [self.totalAmount floatValue] > 0, @"Total Amount must be used for payment initializer");
+    NSAssert(self.invoice && [self.invoice length] > 0, @"Invoice must be used for payment initializer");
     NSAssert(self.memo, @"Memo must be used for payment initializer");
     NSAssert(self.taxAmount, @"Tax Amount must be used for payment initializer");
     

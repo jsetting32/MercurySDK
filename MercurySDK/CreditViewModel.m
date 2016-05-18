@@ -29,7 +29,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CreditCell *cell = (CreditCell *)[tableView dequeueReusableCellWithIdentifier:[CreditCell cellIdentifier]];
     CreditResponse *card = [self.credits objectAtIndex:indexPath.row];
-    [cell.labelRefNo setText:card.refNo];
+    [cell.labelRefNo setText:[card formattedTransactionDateTime]];
     [cell.labelToken setText:card.token];
     [cell.labelAccount setText:card.action];
     [cell.labelMessage setText:card.message];

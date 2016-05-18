@@ -9,6 +9,7 @@
 #import "JSCheckoutAddressEntryController.h"
 #import "JSMercuryCoreDataController.h"
 #import "NSManagedObject+Properties.h"
+#import "Address.h"
 
 @interface JSCheckoutAddressEntryController ()
 
@@ -29,16 +30,20 @@
 }
 
 - (IBAction)didTapSubmitButton:(UIBarButtonItem *)sender {
-    Address *address = [Address js_hardManagedObject:[[JSMercuryCoreDataController sharedInstance] masterManagedObjectContext]];
-    address.name = self.textFieldName.text;
-    address.address = self.textFieldAddress.text;
-    address.city = self.textFieldCity.text;
-    address.state = self.textFieldState.text;
-    address.postalCode = self.textFieldPostalCode.text;
-    address.country = self.textFieldCountry.text;
-    address.phone = self.textFieldPhone.text;
-    address.billing = @(self.billing);
+
+    NSMutableDictionary *data = [NSMutableDictionary dictionary];
+    [data setObject:self.textFieldName.text forKey:@"name"];
+    [data setObject:self.textFieldAddress.text forKey:@"address"];
+    [data setObject:self.textFieldCity.text forKey:@"city"];
+    [data setObject:self.textFieldState.text forKey:@"state"];
+    [data setObject:self.textFieldPostalCode.text forKey:@"postalCode"];
+    [data setObject:self.textFieldCountry.text forKey:@"country"];
+    [data setObject:self.textFieldPhone.text forKey:@"phone"];
+    [data setObject:@(self.billing) forKey:@"billing"];
     
+    NSError *error = nil;
+    Address *address = [Address saveAddress:data error:&error];
+        
     if (self.entryDelegate && [self.entryDelegate respondsToSelector:@selector(JSCheckoutAddressEntryController:didTapSaveButton:address:)]) {
         [self.entryDelegate JSCheckoutAddressEntryController:self didTapSaveButton:sender address:address];
     }

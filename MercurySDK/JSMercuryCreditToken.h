@@ -17,6 +17,8 @@
 @interface JSMercuryCreditToken : NSObject <HCMercuryHelperDelegate>
 
 - (nullable instancetype)initWithToken:(nonnull NSString *)token;
+- (nullable instancetype)initWithResponse:(nonnull CreditResponse *)response;
+
 
 @property (strong, nonatomic, nonnull) kJSMercuryObjectBlock completionBlock;
 

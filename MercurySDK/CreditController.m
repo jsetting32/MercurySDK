@@ -10,6 +10,8 @@
 #import "CreditViewModel.h"
 #import "JSMercuryUtility.h"
 #import "NSManagedObject+Properties.h"
+#import "VerifyCardInfo.h"
+#import "JSMercuryCoreDataController.h"
 
 @interface CreditController () <UITableViewDelegate, UITableViewDataSource, CreditViewModelDelegate>
 @property (strong, nonatomic, nonnull) CreditViewModel *model;
@@ -53,8 +55,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    CreditResponse *card = [self.model.credits objectAtIndex:indexPath.row];
-    [JSMercuryUtility showAlert:self creditResponse:card];
+    NSError *error = nil;
+    NSArray *cards = [JSMercuryCoreDataController fetchVerifyCardInfoAll:error];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Choose Card" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    for (VerifyCardInfo *c in cards) {
+        UIAlertAction *action = [UIAlertAction actionWithTitle:c.maskedAccount style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            CreditResponse *card = [self.model.credits objectAtIndex:indexPath.row];
+            [JSMercuryUtility showAlert:self creditResponse:card token:c.token completion:^{
+                [card deleteObject:nil];
+                [self.model.credits removeObjectAtIndex:indexPath.row];
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+                [self.model loadCredits];
+            }];
+        }];
+        [alert addAction:action];
+    }
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -7,6 +7,7 @@
 //
 
 #import "JSMercuryCoreDataController.h"
+#import "NSManagedObject+Properties.h"
 
 @interface JSMercuryCoreDataController()
 @property (strong, nonatomic) NSManagedObjectContext *masterManagedObjectContext;
@@ -164,6 +165,12 @@
 }
 
 #pragma mark - Fetch Requests
++ (nullable VerifyCardInfo *)fetchVerifyCardInfoByToken:(nullable NSString *)token error:(NSError * _Nullable __autoreleasing * _Nullable)error {
+    NSManagedObjectContext *context = [[JSMercuryCoreDataController sharedInstance] masterManagedObjectContext];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"VerifyCardInfo"];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"token == %@", token]];
+    return [[context executeFetchRequest:request error:error] firstObject];
+}
 
 + (NSArray <VerifyPayment *> *)fetchVerifyPaymentAll:(NSError *)error {
     NSManagedObjectContext *context = [[JSMercuryCoreDataController sharedInstance] masterManagedObjectContext];
@@ -207,6 +214,60 @@
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"invoice" ascending:NO]];
     CreditResponse * response = [[context executeFetchRequest:fetchRequest error:&error] firstObject];
     return response ? @([[response invoice] integerValue] + 1) : @1;
+}
+
++ (nullable VerifyCardInfo *)fetchVerifyCardInfoLastUsed:(NSError *)error {
+    NSManagedObjectContext *context = [[JSMercuryCoreDataController sharedInstance] masterManagedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"VerifyCardInfo" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateUsed" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        
+    }
+    return [fetchedObjects firstObject];
+}
+
++ (nullable Address *)fetchBillingAddressLastUsed:(NSError *)error {
+    NSManagedObjectContext *context = [[JSMercuryCoreDataController sharedInstance] masterManagedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Address" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"billing == %@", @YES];
+    [fetchRequest setPredicate:predicate];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateUsed" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        
+    }
+    return [fetchedObjects firstObject];
+}
+
++ (nullable Address *)fetchShippingAddressLastUsed:(NSError *)error {
+    NSManagedObjectContext *context = [[JSMercuryCoreDataController sharedInstance] masterManagedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Address" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"billing == %@", @NO];
+    [fetchRequest setPredicate:predicate];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateUsed" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        
+    }
+    return [fetchedObjects firstObject];
+}
+
++ (BOOL)updateUsedCard:(VerifyCardInfo *)card billing:(Address *)billing shipping:(Address *)shipping error:(NSError **)error {
+    if (card) card.dateUsed = [NSDate date];
+    if (billing) billing.dateUsed = [NSDate date];
+    if (shipping) shipping.dateUsed = [NSDate date];
+    NSManagedObjectContext *context = [[JSMercuryCoreDataController sharedInstance] masterManagedObjectContext];
+    return [context save:error];
 }
 
 @end

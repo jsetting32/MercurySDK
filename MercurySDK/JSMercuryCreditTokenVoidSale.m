@@ -22,13 +22,21 @@
     return self;
 }
 
+- (instancetype)initWithResponse:(CreditResponse *)response {
+    if (!(self = [super initWithResponse:response])) return nil;
+    _authCode = response.authCode;
+    _purchaseAmount = response.purchaseAmount;
+    _refNo = response.refNo;
+    return self;
+}
+
 - (void)hcTransactionDidFinish:(NSDictionary *)result {
     if (self.completionBlock) {
         JSMercuryCreditTokenResponse *response = [[JSMercuryCreditTokenResponse alloc] initWithResponse:result action:MERCURY_ACTION_CREDIT_TOKEN_VOID_SALE];
         NSError *error = nil;
         BOOL coreData = [[[JSMercuryAPIClient sharedClient] coreDataKey] boolValue];
         if (coreData) {
-            if (![CreditResponse createCreditResponse:response error:error]) {
+            if (![CreditResponse createCreditResponse:response token:self.token error:&error]) {
                 NSLog(@"%@", error);
             }
         }
@@ -60,18 +68,17 @@
     NSMutableDictionary *parameters = [super generateParameters:emptyParameters error:error];
 
     if ([[[JSMercuryAPIClient sharedClient] production] boolValue]) {
-        
-    } else {
         if (![JSMercuryUtility checkField:self.authCode]) [emptyParameters addObject:@"AuthCode"];
         if (![JSMercuryUtility checkField:self.purchaseAmount]) [emptyParameters addObject:@"PurchaseAmount"];
         if (![JSMercuryUtility checkField:self.refNo]) [emptyParameters addObject:@"RefNo"];
         if ([emptyParameters count] > 0) {
             *error = [JSMercuryCreditToken errorWithParameters:emptyParameters];
             return nil;
-        }
-//        NSAssert([JSMercuryUtility checkField:self.authCode], @"AuthCode is a required field for Token Void Sale");
-//        NSAssert([JSMercuryUtility checkField:self.purchaseAmount], @"PurchaseAmount is a required field for Token Void Sale");
-//        NSAssert([JSMercuryUtility checkField:self.refNo], @"RefNo is a required field for Token Void Sale");
+        }        
+    } else {
+        NSAssert([JSMercuryUtility checkField:self.authCode], @"AuthCode is a required field for Token Void Sale");
+        NSAssert([JSMercuryUtility checkField:self.purchaseAmount], @"PurchaseAmount is a required field for Token Void Sale");
+        NSAssert([JSMercuryUtility checkField:self.refNo], @"RefNo is a required field for Token Void Sale");
     }
     
     [parameters setObject:self.authCode forKey:@"AuthCode"];

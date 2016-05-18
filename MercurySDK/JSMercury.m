@@ -56,7 +56,7 @@ static NSNumber *JSMercuryProductionKey;
     _production = @(production);
     
     //        _operationQueue = [NSOperationQueue mainQueue];
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     //        config.HTTPAdditionalHeaders = @{
     //                                         @"Content-Type" : @"application/json"
     //                                         };
@@ -71,6 +71,11 @@ static NSNumber *JSMercuryProductionKey;
 #pragma clang diagnostic ignored "-Wunused-variable"
 + (void)validateMerchantKey:(NSString *)merchantKey {
     NSCAssert(merchantKey != nil && ![merchantKey isEqualToString:@""], @"You must use a valid access key to make transactions. For more info, see https://stripe.com/docs/stripe.js");
+    NSScanner* scan = [NSScanner scannerWithString:merchantKey];
+    int val;
+    NSAssert([scan scanInt:&val] && [scan isAtEnd], @"The MerchantID key must be of a numeric integer value");
+
+    
     //    BOOL secretKey = [accessKey hasPrefix:@"sk_"];
     //    NSCAssert(!secretKey, @"You are using a secret key to create a token, instead of the publishable one. For more info, see https://stripe.com/docs/stripe.js");
     //#ifndef DEBUG

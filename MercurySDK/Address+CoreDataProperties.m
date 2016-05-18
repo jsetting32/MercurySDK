@@ -2,7 +2,7 @@
 //  Address+CoreDataProperties.m
 //  MercurySDK
 //
-//  Created by John Setting on 5/11/16.
+//  Created by John Setting on 5/18/16.
 //  Copyright © 2016 John Setting. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,13 +13,14 @@
 
 @implementation Address (CoreDataProperties)
 
-@dynamic name;
 @dynamic address;
-@dynamic postalCode;
-@dynamic phone;
-@dynamic state;
+@dynamic billing;
 @dynamic city;
 @dynamic country;
-@dynamic billing;
+@dynamic name;
+@dynamic phone;
+@dynamic postalCode;
+@dynamic state;
+@dynamic dateUsed;
 
 @end

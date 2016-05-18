@@ -5,6 +5,7 @@
         <attribute name="billing" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateUsed" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postalCode" optional="YES" attributeType="String" syncable="YES"/>
@@ -27,7 +28,9 @@
         <attribute name="purchaseAmount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="refNo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taxAmount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="token" attributeType="String" syncable="YES"/>
+        <attribute name="transPostTime" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="Verify" representedClassName="Verify" syncable="YES">
         <attribute name="cardHolderName" attributeType="String" syncable="YES"/>
@@ -44,6 +47,7 @@
     <entity name="VerifyCardInfo" representedClassName="VerifyCardInfo" parentEntity="Verify" syncable="YES">
         <attribute name="cardIdExpired" attributeType="Boolean" syncable="YES"/>
         <attribute name="cardUsage" attributeType="String" syncable="YES"/>
+        <attribute name="dateUsed" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="operatorId" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="VerifyPayment" representedClassName="VerifyPayment" parentEntity="Verify" syncable="YES">
@@ -69,10 +73,10 @@
     <fetchRequest name="VerifyCardInfoFetchAll" entity="VerifyCardInfo"/>
     <fetchRequest name="VerifyPaymentFetchAll" entity="VerifyPayment"/>
     <elements>
-        <element name="CreditResponse" positionX="-245" positionY="-117" width="128" height="300"/>
+        <element name="Address" positionX="-63" positionY="207" width="128" height="178"/>
+        <element name="CreditResponse" positionX="-245" positionY="-117" width="128" height="328"/>
         <element name="Verify" positionX="180" positionY="-60" width="128" height="195"/>
-        <element name="VerifyCardInfo" positionX="-63" positionY="-153" width="128" height="90"/>
-        <element name="VerifyPayment" positionX="-63" positionY="-18" width="128" height="268"/>
-        <element name="Address" positionX="0" positionY="36" width="128" height="165"/>
+        <element name="VerifyCardInfo" positionX="-63" positionY="-243" width="128" height="103"/>
+        <element name="VerifyPayment" positionX="-63" positionY="-108" width="128" height="268"/>
     </elements>
 </model>

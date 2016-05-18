@@ -23,6 +23,12 @@
     return self;
 }
 
+- (instancetype)initWithResponse:(CreditResponse *)response {
+    if (!([self initWithToken:response.token])) return nil;
+    _invoice = response.invoice;
+    return self;
+}
+
 - (instancetype)init {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                    reason:@"You must use initWithToken: as the initializer"
@@ -38,15 +44,17 @@
 - (NSMutableDictionary *)generateParameters:(NSMutableArray *)emptyParameters error:(NSError *__autoreleasing  _Nullable *)error
 {
     if ([[[JSMercuryAPIClient sharedClient] production] boolValue]) {
-
-    } else {
         if (![JSMercuryUtility checkField:self.invoice]) [emptyParameters addObject:@"Invoice"];
         if (![JSMercuryUtility checkField:self.memo]) [emptyParameters addObject:@"Memo"];
         if (![JSMercuryUtility checkField:self.token]) [emptyParameters addObject:@"Token"];
-        if ([emptyParameters count] > 0) return nil;
-//        NSAssert([JSMercuryUtility checkField:self.invoice], @"Invoice must have some value for credit tokens");
-//        NSAssert([JSMercuryUtility checkField:self.memo], @"Memo must have some value for credit tokens");
-//        NSAssert([JSMercuryUtility checkField:self.token], @"Token must have some value for credit tokens");
+        if ([emptyParameters count] > 0) {
+            *error = [JSMercuryCreditToken errorWithParameters:emptyParameters];
+            return nil;
+        }
+    } else {
+        NSAssert([JSMercuryUtility checkField:self.invoice], @"Invoice must have some value for credit tokens");
+        NSAssert([JSMercuryUtility checkField:self.memo], @"Memo must have some value for credit tokens");
+        NSAssert([JSMercuryUtility checkField:self.token], @"Token must have some value for credit tokens");
     }
 
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
